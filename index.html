@@ -987,7 +987,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 20px;
         flex-shrink: 0;
         transition:
           background 0.35s,
@@ -1157,13 +1156,25 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 22px;
         margin-bottom: 20px;
         background: rgba(196, 154, 48, 0.09);
         border: 1px solid rgba(196, 154, 48, 0.16);
         transition:
           background 0.35s,
           border-color 0.35s;
+        color: var(--g2);
+      }
+      .sc-ico svg {
+        width: 24px;
+        height: 24px;
+        stroke: var(--g2);
+      }
+      .sc.feat .sc-ico svg {
+        stroke: var(--g3);
+      }
+      .sc.feat .sc-ico {
+        background: rgba(196, 154, 48, 0.1);
+        border-color: rgba(196, 154, 48, 0.2);
       }
       .sc-t {
         font-family: "Playfair Display", serif;
@@ -1248,9 +1259,18 @@
         transform: scaleX(1);
       }
       .bc-ico {
-        font-size: 30px;
+        width: 48px;
+        height: 48px;
         margin-bottom: 18px;
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--g2);
+      }
+      .bc-ico svg {
+        width: 28px;
+        height: 28px;
+        stroke: var(--g2);
       }
       .bc-t {
         font-family: "Playfair Display", serif;
@@ -1437,12 +1457,9 @@
       }
       .t-stars {
         display: flex;
-        gap: 2px;
+        align-items: center;
         margin-bottom: 16px;
-      }
-      .t-stars span {
-        color: var(--g2);
-        font-size: 13px;
+        line-height: 1;
       }
       .t-q {
         font-family: "Playfair Display", serif;
@@ -1850,6 +1867,279 @@
       /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
+      /* ═══════════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════════ */
+      @media (pointer: fine) {
+        * {
+          cursor: none !important;
+        }
+        #cur {
+          position: fixed;
+          z-index: 99999;
+          pointer-events: none;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--g2);
+          transform: translate(-50%, -50%);
+          transition:
+            width 0.2s,
+            height 0.2s,
+            background 0.2s,
+            opacity 0.2s;
+          will-change: transform;
+          mix-blend-mode: multiply;
+        }
+        [data-theme="dark"] #cur {
+          mix-blend-mode: screen;
+        }
+        #cur-ring {
+          position: fixed;
+          z-index: 99998;
+          pointer-events: none;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          border: 1px solid rgba(196, 154, 48, 0.5);
+          transform: translate(-50%, -50%);
+          transition:
+            width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+            height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+            border-color 0.2s,
+            opacity 0.2s;
+          will-change: transform;
+        }
+        #cur.hovering {
+          width: 14px;
+          height: 14px;
+          background: var(--g3);
+        }
+        #cur-ring.hovering {
+          width: 52px;
+          height: 52px;
+          border-color: rgba(196, 154, 48, 0.7);
+        }
+        #cur.clicking {
+          width: 6px;
+          height: 6px;
+        }
+        #cur-ring.clicking {
+          width: 28px;
+          height: 28px;
+        }
+        #cur.hidden,
+        #cur-ring.hidden {
+          opacity: 0;
+        }
+      }
+
+      /* ═══════════════════════════════════════════
+   MAGNETIC BUTTONS
+═══════════════════════════════════════════ */
+      .mag {
+        display: inline-block;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* ═══════════════════════════════════════════
+   HERO CANVAS (particle field)
+═══════════════════════════════════════════ */
+      #hero-canvas {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.55;
+        z-index: 0;
+      }
+      [data-theme="dark"] #hero-canvas {
+        opacity: 0.4;
+      }
+
+      /* ═══════════════════════════════════════════
+   CARD TILT (3D perspective)
+═══════════════════════════════════════════ */
+      .tilt {
+        transform-style: preserve-3d;
+        transition:
+          transform 0.08s linear,
+          box-shadow 0.3s;
+        will-change: transform;
+      }
+      /* spotlight overlay inside tilt cards */
+      .tilt-spot {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(
+          circle 180px at var(--mx, 50%) var(--my, 50%),
+          rgba(196, 154, 48, 0.07),
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .tilt:hover .tilt-spot {
+        opacity: 1;
+      }
+
+      /* ═══════════════════════════════════════════
+   SPLIT TEXT REVEAL
+═══════════════════════════════════════════ */
+      .split-word {
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: bottom;
+      }
+      .split-word span {
+        display: inline-block;
+        transform: translateY(110%);
+        transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .split-word.in span {
+        transform: translateY(0);
+      }
+
+      /* ═══════════════════════════════════════════
+   COUNTER TICK ANIMATION
+═══════════════════════════════════════════ */
+      @keyframes countTick {
+        0% {
+          transform: translateY(60%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .count-tick {
+        animation: countTick 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* ═══════════════════════════════════════════
+   SECTION DIVIDER LINE
+═══════════════════════════════════════════ */
+      .line-reveal {
+        height: 1px;
+        background: var(--grad);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity: 0.35;
+      }
+      .line-reveal.in {
+        transform: scaleX(1);
+      }
+
+      /* ═══════════════════════════════════════════
+   SCROLL-DRIVEN PARALLAX
+═══════════════════════════════════════════ */
+      .parallax-slow {
+        will-change: transform;
+      }
+      .parallax-fast {
+        will-change: transform;
+      }
+
+      /* ═══════════════════════════════════════════
+   STAGGER CHILDREN
+═══════════════════════════════════════════ */
+      .stagger > * {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+      }
+      .stagger.in > * {
+        opacity: 1;
+        transform: none;
+      }
+      .stagger.in > *:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .stagger.in > *:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .stagger.in > *:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .stagger.in > *:nth-child(4) {
+        transition-delay: 0.3s;
+      }
+
+      /* ═══════════════════════════════════════════
+   NAV LINK HOVER — sliding underline
+═══════════════════════════════════════════ */
+      .nav-ul a {
+        position: relative;
+      }
+      .nav-ul a::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 13px;
+        right: 13px;
+        height: 1px;
+        background: var(--grad);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .nav-ul a:hover::after,
+      .nav-ul a.active:not(.nav-cta)::after {
+        transform: scaleX(1);
+      }
+
+      /* ═══════════════════════════════════════════
+   PROCESS STEP connector pulse
+═══════════════════════════════════════════ */
+      @keyframes connPulse {
+        0%,
+        100% {
+          opacity: 0.18;
+        }
+        50% {
+          opacity: 0.45;
+        }
+      }
+      .steps::before {
+        animation: connPulse 3s ease-in-out infinite;
+      }
+
+      /* ═══════════════════════════════════════════
+   HERO HEADING word-by-word clip
+═══════════════════════════════════════════ */
+      .h-heading .word {
+        display: inline-block;
+        clip-path: inset(0 100% 0 0);
+        transition: clip-path 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .h-heading.words-in .word {
+        clip-path: inset(0 0% 0 0);
+      }
+      .h-heading.words-in .word:nth-child(1) {
+        transition-delay: 0.05s;
+      }
+      .h-heading.words-in .word:nth-child(2) {
+        transition-delay: 0.18s;
+      }
+      .h-heading.words-in .word:nth-child(3) {
+        transition-delay: 0.31s;
+      }
+      .h-heading.words-in .word:nth-child(4) {
+        transition-delay: 0.44s;
+      }
+      .h-heading.words-in .word:nth-child(5) {
+        transition-delay: 0.57s;
+      }
+
+      /* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
       @media (max-width: 880px) {
         .cmp-grid,
         .sol-grid,
@@ -1908,6 +2198,9 @@
     </style>
   </head>
   <body>
+    <div id="cur"></div>
+    <div id="cur-ring"></div>
+
     <div id="prog"></div>
 
     <!-- ════════ DRAWER ════════ -->
@@ -1990,6 +2283,7 @@
 
     <!-- ════════ HERO ════════ -->
     <section id="hero">
+      <canvas id="hero-canvas"></canvas>
       <div class="h-orb"></div>
       <div class="h-orb h-orb2"></div>
       <div class="h-grid-bg"></div>
@@ -2072,10 +2366,11 @@
           <div class="h-dot"></div>
           <span>AI-Powered Customer Intelligence</span>
         </div>
-        <h1 class="h-heading fiu" data-d="1">
-          Turn Every<br />
-          <em class="gold">Conversation</em><br />
-          Into Growth.
+        <h1 class="h-heading" id="heroHeading">
+          <span class="word">Turn</span> <span class="word">Every</span><br />
+          <em><span class="word gold">Conversation</span></em
+          ><br />
+          <span class="word">Into</span> <span class="word">Growth.</span>
         </h1>
         <p class="h-sub fiu" data-d="2">
           Kaizen AI designs and deploys intelligent workflow systems that
@@ -2083,12 +2378,12 @@
           better relationships — at any scale.
         </p>
         <div class="h-btns fiu" data-d="3">
-          <a href="#cta" class="btn btn-g"
+          <a href="#cta" class="btn btn-g mag"
             >Book a Free Strategy Call <span style="font-size: 15px">→</span></a
           >
-          <a href="#solutions" class="btn btn-o">See Our Solutions</a>
+          <a href="#solutions" class="btn btn-o mag">See Our Solutions</a>
         </div>
-        <div class="h-stats fiu" data-d="4">
+        <div class="h-stats fiu stagger" data-d="4">
           <div class="stat">
             <div class="sn" id="s1">3.4×</div>
             <div class="sl">Faster Resolution</div>
@@ -2365,7 +2660,27 @@
         <div class="cmp-grid fiu" data-d="2">
           <div class="cmp-col old">
             <div class="cmp-hd">
-              <div class="cmp-ico">⚙️</div>
+              <div class="cmp-ico">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="color: var(--tx3)"
+                >
+                  <circle cx="12" cy="12" r="3" />
+                  <path
+                    d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"
+                  />
+                  <path
+                    d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"
+                  />
+                </svg>
+              </div>
               <div>
                 <div class="cmp-col-t">The Old Way</div>
                 <div class="cmp-sub">Traditional CRM &amp; Support</div>
@@ -2382,7 +2697,23 @@
           </div>
           <div class="cmp-col new">
             <div class="cmp-hd">
-              <div class="cmp-ico">✦</div>
+              <div class="cmp-ico">
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="color: var(--g3)"
+                >
+                  <path
+                    d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"
+                  />
+                </svg>
+              </div>
               <div>
                 <div class="cmp-col-t">The Kaizen Way</div>
                 <div class="cmp-sub">AI-Powered Workflow Intelligence</div>
@@ -2417,9 +2748,28 @@
           challenges — end to end.
         </p>
         <div class="sol-grid">
-          <div class="sc feat fiu" data-d="1">
+          <div class="sc feat fiu tilt" data-d="1">
+            <div class="tilt-spot"></div>
             <div class="sc-n">01</div>
-            <div class="sc-ico">🤖</div>
+            <div class="sc-ico">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
+                <path d="M12 8v4l3 3" />
+                <path d="M16.5 3.5l1 1" />
+                <path d="M21 8h-1" />
+                <path d="M21 16h-1" />
+                <path d="M16.5 20.5l-1-1" />
+              </svg>
+            </div>
             <div class="sc-t">Intelligent Triage Engine</div>
             <p class="sc-d">
               AI classifies, prioritises, and routes every inbound query to the
@@ -2427,9 +2777,26 @@
             </p>
             <span class="sc-tag">Core Product</span>
           </div>
-          <div class="sc fiu" data-d="2">
+          <div class="sc fiu tilt" data-d="2">
+            <div class="tilt-spot"></div>
             <div class="sc-n">02</div>
-            <div class="sc-ico">💬</div>
+            <div class="sc-ico">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                />
+                <path d="M8 10h8M8 14h5" />
+              </svg>
+            </div>
             <div class="sc-t">Conversational AI Agents</div>
             <p class="sc-d">
               Custom-trained LLM agents that speak your brand's voice, resolve
@@ -2438,9 +2805,34 @@
             </p>
             <span class="sc-tag">Most Popular</span>
           </div>
-          <div class="sc fiu" data-d="3">
+          <div class="sc fiu tilt" data-d="3">
+            <div class="tilt-spot"></div>
             <div class="sc-n">03</div>
-            <div class="sc-ico">📊</div>
+            <div class="sc-ico">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 20V10M12 20V4M6 20v-6" />
+                <rect
+                  x="3"
+                  y="3"
+                  width="18"
+                  height="18"
+                  rx="2"
+                  ry="2"
+                  opacity=".15"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </div>
             <div class="sc-t">Sentiment Intelligence</div>
             <p class="sc-d">
               Real-time NLP analysis across all customer interactions. Surface
@@ -2449,9 +2841,26 @@
             </p>
             <span class="sc-tag">Analytics</span>
           </div>
-          <div class="sc fiu" data-d="4">
+          <div class="sc fiu tilt" data-d="4">
+            <div class="tilt-spot"></div>
             <div class="sc-n">04</div>
-            <div class="sc-ico">🔗</div>
+            <div class="sc-ico">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="7" width="6" height="10" rx="1" />
+                <rect x="9" y="3" width="6" height="14" rx="1" />
+                <rect x="16" y="10" width="6" height="7" rx="1" />
+                <path d="M5 7V4M12 3V1M19 10V8" />
+              </svg>
+            </div>
             <div class="sc-t">Workflow Orchestration</div>
             <p class="sc-d">
               Connect your CRM, helpdesk, email, chat, and internal tools into a
@@ -2473,8 +2882,22 @@
         </h2>
         <div class="orn fiu" data-d="2"><div class="orn-d"></div></div>
         <div class="ben-grid">
-          <div class="bc fiu" data-d="1">
-            <span class="bc-ico">⚡</span>
+          <div class="bc fiu tilt" data-d="1">
+            <div class="tilt-spot"></div>
+            <span class="bc-ico"
+              ><svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" /></svg
+            ></span>
             <div class="bc-t">Always-On, 24/7</div>
             <p class="bc-d">
               Your AI workflows never sleep. Consistent, high-quality responses
@@ -2482,8 +2905,26 @@
             </p>
             <div class="bc-m">99.9% Uptime SLA</div>
           </div>
-          <div class="bc fiu" data-d="2">
-            <span class="bc-ico">🔌</span>
+          <div class="bc fiu tilt" data-d="2">
+            <div class="tilt-spot"></div>
+            <span class="bc-ico"
+              ><svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+                />
+                <path
+                  d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+                /></svg
+            ></span>
             <div class="bc-t">Seamless Integration</div>
             <p class="bc-d">
               Plug directly into Salesforce, HubSpot, Zendesk, Intercom, and 40+
@@ -2491,8 +2932,22 @@
             </p>
             <div class="bc-m">40+ Native Connectors</div>
           </div>
-          <div class="bc fiu" data-d="3">
-            <span class="bc-ico">📈</span>
+          <div class="bc fiu tilt" data-d="3">
+            <div class="tilt-spot"></div>
+            <span class="bc-ico"
+              ><svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                <polyline points="16 7 22 7 22 13" /></svg
+            ></span>
             <div class="bc-t">Superior Efficiency</div>
             <p class="bc-d">
               Reduce average handle time by 60%, slash cost-per-resolution, and
@@ -2550,10 +3005,37 @@
           Real Results, Real <span class="gold">People</span>
         </h2>
         <div class="tg">
-          <div class="tc fiu" data-d="1">
+          <div class="tc fiu tilt" data-d="1">
+            <div class="tilt-spot"></div>
             <div class="t-stars">
-              <span>★</span><span>★</span><span>★</span><span>★</span
-              ><span>★</span>
+              <svg
+                width="72"
+                height="14"
+                viewBox="0 0 72 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7 1l1.6 4.8H14L9.7 8.9l1.6 4.8L7 11l-4.3 2.7 1.6-4.8L0 5.8h5.4z"
+                  fill="var(--g2)"
+                />
+                <path
+                  d="M21 1l1.6 4.8H28l-4.3 3.1 1.6 4.8L21 11l-4.3 2.7 1.6-4.8L14 5.8h5.4z"
+                  fill="var(--g2)"
+                />
+                <path
+                  d="M35 1l1.6 4.8H42l-4.3 3.1 1.6 4.8L35 11l-4.3 2.7 1.6-4.8L28 5.8h5.4z"
+                  fill="var(--g2)"
+                />
+                <path
+                  d="M49 1l1.6 4.8H56l-4.3 3.1 1.6 4.8L49 11l-4.3 2.7 1.6-4.8L42 5.8h5.4z"
+                  fill="var(--g2)"
+                />
+                <path
+                  d="M63 1l1.6 4.8H70l-4.3 3.1 1.6 4.8L63 11l-4.3 2.7 1.6-4.8L56 5.8h5.4z"
+                  fill="var(--g2)"
+                />
+              </svg>
             </div>
             <p class="t-q">
               Kaizen AI cut our average response time from 4 hours to under 8
@@ -2567,10 +3049,37 @@
               </div>
             </div>
           </div>
-          <div class="tc feat fiu" data-d="2">
+          <div class="tc feat fiu tilt" data-d="2">
+            <div class="tilt-spot"></div>
             <div class="t-stars">
-              <span>★</span><span>★</span><span>★</span><span>★</span
-              ><span>★</span>
+              <svg
+                width="72"
+                height="14"
+                viewBox="0 0 72 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7 1l1.6 4.8H14L9.7 8.9l1.6 4.8L7 11l-4.3 2.7 1.6-4.8L0 5.8h5.4z"
+                  fill="var(--g3)"
+                />
+                <path
+                  d="M21 1l1.6 4.8H28l-4.3 3.1 1.6 4.8L21 11l-4.3 2.7 1.6-4.8L14 5.8h5.4z"
+                  fill="var(--g3)"
+                />
+                <path
+                  d="M35 1l1.6 4.8H42l-4.3 3.1 1.6 4.8L35 11l-4.3 2.7 1.6-4.8L28 5.8h5.4z"
+                  fill="var(--g3)"
+                />
+                <path
+                  d="M49 1l1.6 4.8H56l-4.3 3.1 1.6 4.8L49 11l-4.3 2.7 1.6-4.8L42 5.8h5.4z"
+                  fill="var(--g3)"
+                />
+                <path
+                  d="M63 1l1.6 4.8H70l-4.3 3.1 1.6 4.8L63 11l-4.3 2.7 1.6-4.8L56 5.8h5.4z"
+                  fill="var(--g3)"
+                />
+              </svg>
             </div>
             <p class="t-q">
               We scaled from 200 to 2,000 daily support tickets without adding a
@@ -2584,10 +3093,37 @@
               </div>
             </div>
           </div>
-          <div class="tc fiu" data-d="3">
+          <div class="tc fiu tilt" data-d="3">
+            <div class="tilt-spot"></div>
             <div class="t-stars">
-              <span>★</span><span>★</span><span>★</span><span>★</span
-              ><span>★</span>
+              <svg
+                width="72"
+                height="14"
+                viewBox="0 0 72 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7 1l1.6 4.8H14L9.7 8.9l1.6 4.8L7 11l-4.3 2.7 1.6-4.8L0 5.8h5.4z"
+                  fill="var(--g2)"
+                />
+                <path
+                  d="M21 1l1.6 4.8H28l-4.3 3.1 1.6 4.8L21 11l-4.3 2.7 1.6-4.8L14 5.8h5.4z"
+                  fill="var(--g2)"
+                />
+                <path
+                  d="M35 1l1.6 4.8H42l-4.3 3.1 1.6 4.8L35 11l-4.3 2.7 1.6-4.8L28 5.8h5.4z"
+                  fill="var(--g2)"
+                />
+                <path
+                  d="M49 1l1.6 4.8H56l-4.3 3.1 1.6 4.8L49 11l-4.3 2.7 1.6-4.8L42 5.8h5.4z"
+                  fill="var(--g2)"
+                />
+                <path
+                  d="M63 1l1.6 4.8H70l-4.3 3.1 1.6 4.8L63 11l-4.3 2.7 1.6-4.8L56 5.8h5.4z"
+                  fill="var(--g2)"
+                />
+              </svg>
             </div>
             <p class="t-q">
               Their sentiment engine caught a churn wave we'd never have spotted
@@ -2783,7 +3319,9 @@
     </footer>
 
     <script>
-      /* ── Smooth scroll ── */
+      /* ══════════════════════════════════════════════════
+   SMOOTH SCROLL ENGINE
+══════════════════════════════════════════════════ */
       const NH = 70;
       function goTo(id) {
         const el = document.getElementById(id);
@@ -2802,7 +3340,9 @@
         goTo(a.getAttribute("href").slice(1));
       });
 
-      /* ── Progress & nav ── */
+      /* ══════════════════════════════════════════════════
+   PROGRESS + NAV
+══════════════════════════════════════════════════ */
       const prog = document.getElementById("prog");
       const nav = document.getElementById("nav");
       window.addEventListener(
@@ -2812,11 +3352,14 @@
           prog.style.width =
             (scrollY / (d.scrollHeight - innerHeight)) * 100 + "%";
           nav.classList.toggle("scrolled", scrollY > 20);
+          tickParallax();
         },
         { passive: true },
       );
 
-      /* ── Active nav ── */
+      /* ══════════════════════════════════════════════════
+   ACTIVE NAV
+══════════════════════════════════════════════════ */
       const nls = document.querySelectorAll(".nl");
       document.querySelectorAll("section[id]").forEach((s) => {
         new IntersectionObserver(
@@ -2832,7 +3375,9 @@
         ).observe(s);
       });
 
-      /* ── Hamburger / Drawer ── */
+      /* ══════════════════════════════════════════════════
+   HAMBURGER / DRAWER
+══════════════════════════════════════════════════ */
       const ham = document.getElementById("ham");
       const drawer = document.getElementById("drawer");
       function closeDrawer() {
@@ -2855,31 +3400,290 @@
         if (e.key === "Escape") closeDrawer();
       });
 
-      /* ═══════════════════════════════════════
+      /* ══════════════════════════════════════════════════
    THEME TOGGLE
-═══════════════════════════════════════ */
-      const html = document.documentElement;
+══════════════════════════════════════════════════ */
+      const htmlEl = document.documentElement;
       const themeBtn = document.getElementById("themeBtn");
-
-      // Read saved preference, fall back to light
       const saved = localStorage.getItem("kaizen-theme") || "light";
-      html.setAttribute("data-theme", saved);
-
+      htmlEl.setAttribute("data-theme", saved);
       themeBtn.addEventListener("click", () => {
-        const current = html.getAttribute("data-theme");
-        const next = current === "light" ? "dark" : "light";
-        html.setAttribute("data-theme", next);
+        const next =
+          htmlEl.getAttribute("data-theme") === "light" ? "dark" : "light";
+        htmlEl.setAttribute("data-theme", next);
         localStorage.setItem("kaizen-theme", next);
-
-        // Brief scale animation on button
-        themeBtn.style.transform = "scale(.88) rotate(20deg)";
+        themeBtn.style.transform = "scale(.85) rotate(22deg)";
         setTimeout(() => {
           themeBtn.style.transform = "";
-        }, 220);
+        }, 240);
       });
 
-      /* ── Fade in observer ── */
+      /* ══════════════════════════════════════════════════
+   CUSTOM CURSOR  (fine pointer only)
+══════════════════════════════════════════════════ */
+      const isFine = window.matchMedia("(pointer:fine)").matches;
+      if (isFine) {
+        const cur = document.getElementById("cur");
+        const curRing = document.getElementById("cur-ring");
+        let cx = 0,
+          cy = 0,
+          rx = 0,
+          ry = 0;
+
+        document.addEventListener("mousemove", (e) => {
+          cx = e.clientX;
+          cy = e.clientY;
+          cur.style.left = cx + "px";
+          cur.style.top = cy + "px";
+        });
+
+        // Ring follows with lerp
+        (function animRing() {
+          rx += (cx - rx) * 0.14;
+          ry += (cy - ry) * 0.14;
+          curRing.style.left = rx + "px";
+          curRing.style.top = ry + "px";
+          requestAnimationFrame(animRing);
+        })();
+
+        // Hover state on interactive elements
+        const hoverEls =
+          "a,button,.tilt,.btn,.nav-cta,.ham,.theme-toggle,.fi,.faq-link,.logo-item";
+        document.querySelectorAll(hoverEls).forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            cur.classList.add("hovering");
+            curRing.classList.add("hovering");
+          });
+          el.addEventListener("mouseleave", () => {
+            cur.classList.remove("hovering");
+            curRing.classList.remove("hovering");
+          });
+        });
+        document.addEventListener("mousedown", () => {
+          cur.classList.add("clicking");
+          curRing.classList.add("clicking");
+        });
+        document.addEventListener("mouseup", () => {
+          cur.classList.remove("clicking");
+          curRing.classList.remove("clicking");
+        });
+        document.addEventListener("mouseleave", () => {
+          cur.classList.add("hidden");
+          curRing.classList.add("hidden");
+        });
+        document.addEventListener("mouseenter", () => {
+          cur.classList.remove("hidden");
+          curRing.classList.remove("hidden");
+        });
+      }
+
+      /* ══════════════════════════════════════════════════
+   HERO CANVAS — particle field with mouse repulsion
+══════════════════════════════════════════════════ */
+      (function initCanvas() {
+        const canvas = document.getElementById("hero-canvas");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        let W,
+          H,
+          particles = [],
+          mouse = { x: -9999, y: -9999 };
+        const COUNT = 55;
+        const GOLD = [160, 122, 32];
+
+        function resize() {
+          W = canvas.width = canvas.offsetWidth;
+          H = canvas.height = canvas.offsetHeight;
+        }
+        resize();
+        window.addEventListener("resize", resize);
+
+        canvas.parentElement.addEventListener("mousemove", (e) => {
+          const rect = canvas.getBoundingClientRect();
+          mouse.x = e.clientX - rect.left;
+          mouse.y = e.clientY - rect.top;
+        });
+        canvas.parentElement.addEventListener("mouseleave", () => {
+          mouse.x = -9999;
+          mouse.y = -9999;
+        });
+
+        for (let i = 0; i < COUNT; i++) {
+          particles.push({
+            x: Math.random() * 1200,
+            y: Math.random() * 800,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+            r: Math.random() * 1.4 + 0.4,
+            a: Math.random() * 0.5 + 0.15,
+          });
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, W, H);
+          const isDark = htmlEl.getAttribute("data-theme") === "dark";
+          const alpha = isDark ? 0.55 : 0.4;
+
+          particles.forEach((p) => {
+            // Mouse repulsion
+            const dx = p.x - mouse.x,
+              dy = p.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+              const force = ((120 - dist) / 120) * 0.8;
+              p.vx += (dx / dist) * force * 0.06;
+              p.vy += (dy / dist) * force * 0.06;
+            }
+
+            // Velocity damping
+            p.vx *= 0.985;
+            p.vy *= 0.985;
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Wrap
+            if (p.x < 0) p.x = W;
+            if (p.x > W) p.x = 0;
+            if (p.y < 0) p.y = H;
+            if (p.y > H) p.y = 0;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${GOLD[0]},${GOLD[1]},${GOLD[2]},${p.a * alpha})`;
+            ctx.fill();
+          });
+
+          // Draw connecting lines between close particles
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const d = Math.sqrt(dx * dx + dy * dy);
+              if (d < 110) {
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = `rgba(${GOLD[0]},${GOLD[1]},${GOLD[2]},${(1 - d / 110) * 0.08 * alpha * 2})`;
+                ctx.lineWidth = 0.6;
+                ctx.stroke();
+              }
+            }
+          }
+
+          requestAnimationFrame(draw);
+        }
+        draw();
+      })();
+
+      /* ══════════════════════════════════════════════════
+   3D CARD TILT + SPOTLIGHT
+══════════════════════════════════════════════════ */
+      document.querySelectorAll(".tilt").forEach((card) => {
+        const STRENGTH = 8; // max degrees
+
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const cx = rect.width / 2;
+          const cy = rect.height / 2;
+          const rotX = ((y - cy) / cy) * -STRENGTH;
+          const rotY = ((x - cx) / cx) * STRENGTH;
+
+          card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(4px)`;
+
+          // Update spotlight position
+          const spot = card.querySelector(".tilt-spot");
+          if (spot) {
+            spot.style.setProperty("--mx", `${x}px`);
+            spot.style.setProperty("--my", `${y}px`);
+          }
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px)";
+          card.style.transition = "transform .5s cubic-bezier(.16,1,.3,1)";
+          setTimeout(() => {
+            card.style.transition = "";
+          }, 500);
+        });
+
+        card.addEventListener("mouseenter", () => {
+          card.style.transition = "transform .08s linear";
+        });
+      });
+
+      /* ══════════════════════════════════════════════════
+   MAGNETIC BUTTONS
+══════════════════════════════════════════════════ */
+      document.querySelectorAll(".mag").forEach((btn) => {
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - (rect.left + rect.width / 2);
+          const y = e.clientY - (rect.top + rect.height / 2);
+          btn.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px)`;
+        });
+        btn.addEventListener("mouseleave", () => {
+          btn.style.transition = "transform .5s cubic-bezier(.16,1,.3,1)";
+          btn.style.transform = "translate(0,0)";
+          setTimeout(() => {
+            btn.style.transition = "";
+          }, 500);
+        });
+        btn.addEventListener("mouseenter", () => {
+          btn.style.transition = "transform .08s linear";
+        });
+      });
+
+      /* ══════════════════════════════════════════════════
+   HERO HEADING — word clip reveal
+══════════════════════════════════════════════════ */
+      setTimeout(() => {
+        document.getElementById("heroHeading")?.classList.add("words-in");
+      }, 100);
+
+      /* ══════════════════════════════════════════════════
+   PARALLAX — hero orb follows mouse gently
+══════════════════════════════════════════════════ */
+      const heroOrb = document.querySelector(".h-orb");
+      let lastScroll = 0;
+      function tickParallax() {
+        const sy = window.scrollY;
+        if (heroOrb) {
+          heroOrb.style.transform = `translateX(-50%) translateY(${sy * 0.18}px) scale(1)`;
+        }
+        // Parallax slow elements
+        document.querySelectorAll(".parallax-slow").forEach((el) => {
+          el.style.transform = `translateY(${sy * 0.08}px)`;
+        });
+        lastScroll = sy;
+      }
+      if (isFine) {
+        document.addEventListener("mousemove", (e) => {
+          if (heroOrb) {
+            const dx = (e.clientX / window.innerWidth - 0.5) * 24;
+            const dy = (e.clientY / window.innerHeight - 0.5) * 12;
+            heroOrb.style.transform = `translateX(calc(-50% + ${dx}px)) translateY(${dy + lastScroll * 0.18}px)`;
+          }
+        });
+      }
+
+      /* ══════════════════════════════════════════════════
+   INTERSECTION — fade-up + stagger
+══════════════════════════════════════════════════ */
+      const ioOpts = { threshold: 0.1 };
       document.querySelectorAll(".fiu").forEach((el) => {
+        new IntersectionObserver((entries, obs) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              obs.unobserve(e.target);
+            }
+          });
+        }, ioOpts).observe(el);
+      });
+      document.querySelectorAll(".stagger").forEach((el) => {
         new IntersectionObserver(
           (entries, obs) => {
             entries.forEach((e) => {
@@ -2889,11 +3693,13 @@
               }
             });
           },
-          { threshold: 0.1 },
+          { threshold: 0.15 },
         ).observe(el);
       });
 
-      /* ── Stat counters ── */
+      /* ══════════════════════════════════════════════════
+   STAT COUNTERS
+══════════════════════════════════════════════════ */
       function countUp(el, target, suffix, float) {
         let v = 0,
           step = target / 55;
@@ -2918,7 +3724,9 @@
           { threshold: 0.5 },
         ).observe(statsEl);
 
-      /* ── FAQ ── */
+      /* ══════════════════════════════════════════════════
+   FAQ
+══════════════════════════════════════════════════ */
       function tFaq(btn) {
         const item = btn.parentElement,
           was = item.classList.contains("open");
@@ -2928,7 +3736,9 @@
         if (!was) item.classList.add("open");
       }
 
-      /* ── Init ── */
+      /* ══════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════ */
       nav.classList.toggle("scrolled", scrollY > 20);
       if (location.hash) setTimeout(() => goTo(location.hash.slice(1)), 120);
     </script>
