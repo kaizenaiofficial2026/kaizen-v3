@@ -6,8 +6,17 @@
     <link rel="icon" type="image/png" href="logo.png" />
     <title>Kaizen AI — AI Chatbots & Voice Agents</title>
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-705VHWSFEL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-705VHWSFEL');
+    </script>
+
     <!-- SEO: Core -->
-    <meta name="description" content="Kaizen AI builds AI chatbots and voice agents that answer every call, respond to every message, book appointments, and handle customer enquiries — 24/7/365, in any language. Never miss a lead. Never lose a customer." />
+    <meta name="description" content="Kaizen AI builds AI chatbots and voice agents that answer every call, book appointments, and handle enquiries — 24/7/365, in any language. Never miss a lead." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://kaizenai.dev" />
     <link rel="sitemap" type="application/xml" href="https://kaizenai.dev/sitemap.xml" />
@@ -33,10 +42,32 @@
       {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": "https://kaizenai.dev/#organization",
         "name": "Kaizen AI",
+        "alternateName": ["KaizenAI", "Kaizen AI Dev", "kaizenai.dev"],
         "url": "https://kaizenai.dev",
-        "logo": "https://kaizenai.dev/logo.png",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://kaizenai.dev/logo.png"
+        },
+        "foundingDate": "2026",
+        "slogan": "Never Miss a Lead. Never Lose a Customer.",
         "description": "Kaizen AI builds AI chatbots and voice agents that answer every call, respond to every message, book appointments, and handle customer enquiries — 24/7/365, in any language.",
+        "areaServed": "Worldwide",
+        "knowsAbout": [
+          "AI Chatbots",
+          "AI Voice Agents",
+          "Conversational AI",
+          "Business Automation",
+          "Customer Service Automation",
+          "Lead Generation",
+          "Appointment Booking Automation"
+        ],
+        "brand": {
+          "@type": "Brand",
+          "name": "Kaizen AI"
+        },
+        "telephone": "+94770299569",
         "sameAs": [
           "https://www.linkedin.com/company/kaizenai-dev/about/?viewAsMember=true",
           "https://web.facebook.com/profile.php?id=61574344472130",
@@ -47,14 +78,19 @@
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "sales",
-          "availableLanguage": "English"
+          "telephone": "+94770299569",
+          "availableLanguage": ["English"]
         }
       },
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": "https://kaizenai.dev/#website",
         "name": "Kaizen AI",
-        "url": "https://kaizenai.dev"
+        "url": "https://kaizenai.dev",
+        "publisher": {
+          "@id": "https://kaizenai.dev/#organization"
+        }
       },
       {
         "@context": "https://schema.org",
@@ -498,6 +534,76 @@
         color: var(--g2);
         border-color: var(--bd2);
         background: rgba(196, 154, 48, 0.08);
+      }
+      /* ── Legal Modal ── */
+      .legal-modal-card {
+        width: min(100%, 760px);
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .legal-tabs {
+        display: flex;
+        gap: 2px;
+        padding: 20px 34px 0;
+        border-bottom: 1px solid var(--bd);
+      }
+      .legal-tab {
+        padding: 10px 20px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        color: var(--tx2);
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: color 0.2s, border-color 0.2s;
+        margin-bottom: -1px;
+      }
+      .legal-tab.active {
+        color: var(--g2);
+        border-bottom-color: var(--g2);
+      }
+      .legal-tab:hover:not(.active) {
+        color: var(--tx);
+      }
+      .legal-body {
+        overflow-y: auto;
+        padding: 30px 34px 36px;
+        flex: 1;
+        scroll-behavior: smooth;
+      }
+      .legal-body::-webkit-scrollbar { width: 3px; }
+      .legal-body::-webkit-scrollbar-track { background: var(--bg2); }
+      .legal-body::-webkit-scrollbar-thumb { background: var(--g2); border-radius: 10px; }
+      .legal-pane { display: none; }
+      .legal-pane.active { display: block; }
+      .legal-pane h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 22px;
+        color: var(--tx);
+        margin: 24px 0 8px;
+      }
+      .legal-pane h3:first-child { margin-top: 0; }
+      .legal-pane p, .legal-pane li {
+        font-size: 14px;
+        line-height: 1.75;
+        color: var(--tx2);
+      }
+      .legal-pane ul {
+        padding-left: 18px;
+        margin-top: 6px;
+      }
+      .legal-pane ul li { margin-bottom: 4px; }
+      .legal-updated {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--g2);
+        margin-bottom: 18px;
+        display: block;
       }
       .booking-form {
         padding: 26px 34px 34px;
@@ -2767,6 +2873,121 @@
       </div>
     </div>
 
+    <!-- ════════ LEGAL MODAL ════════ -->
+    <div
+      class="modal"
+      id="legalModal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="legalModalTitle"
+    >
+      <div class="modal-backdrop" data-close-legal-modal="true"></div>
+      <div class="modal-card legal-modal-card">
+        <button
+          class="modal-close"
+          type="button"
+          aria-label="Close"
+          data-close-legal-modal="true"
+        >×</button>
+
+        <div class="legal-tabs">
+          <button class="legal-tab active" data-tab="privacy">Privacy Policy</button>
+          <button class="legal-tab" data-tab="terms">Terms of Service</button>
+        </div>
+
+        <div class="legal-body">
+
+          <!-- PRIVACY POLICY -->
+          <div class="legal-pane active" id="legalPane-privacy">
+            <span class="legal-updated">Last updated: April 2026</span>
+
+            <h3>1. Who We Are</h3>
+            <p>Kaizen AI ("we", "us", "our") operates kaizenai.dev and provides AI chatbot and voice agent services. By using our website you agree to this policy.</p>
+
+            <h3>2. Information We Collect</h3>
+            <p>We collect information you voluntarily provide through our contact form:</p>
+            <ul>
+              <li>Full name and company name</li>
+              <li>Work email address and phone number</li>
+              <li>Details about your business needs and timeline</li>
+            </ul>
+            <p>We also collect usage data automatically via Google Analytics 4 (page views, session duration, device type). No personally identifiable information is included in analytics data.</p>
+
+            <h3>3. How We Use Your Information</h3>
+            <ul>
+              <li>To respond to your enquiry and schedule a strategy call</li>
+              <li>To prepare a more relevant first conversation</li>
+              <li>To improve our website and services via aggregated analytics</li>
+              <li>We do not sell, rent, or share your personal data with third parties for marketing purposes</li>
+            </ul>
+
+            <h3>4. Third-Party Services</h3>
+            <p>We use the following services which may process your data:</p>
+            <ul>
+              <li><strong>EmailJS</strong> — transmits form submissions to our inbox. Subject to EmailJS's privacy policy.</li>
+              <li><strong>Google Analytics 4</strong> — anonymised website analytics. Subject to Google's privacy policy.</li>
+              <li><strong>Google Fonts / jsDelivr</strong> — font and script delivery CDNs.</li>
+            </ul>
+
+            <h3>5. Data Security</h3>
+            <p>All data transmitted through our website is encrypted via HTTPS/TLS. We do not store form submissions on our servers — submissions are routed directly to our secure inbox via EmailJS.</p>
+
+            <h3>6. Your Rights (GDPR)</h3>
+            <p>If you are located in the EU/EEA or UK, you have the right to access, rectify, or erase your personal data. To exercise any of these rights, contact us via WhatsApp or the contact form and we will respond within 30 days.</p>
+
+            <h3>7. Cookies</h3>
+            <p>We use cookies only for Google Analytics (performance/analytics cookies). No advertising or tracking cookies are used. You may disable cookies in your browser settings at any time.</p>
+
+            <h3>8. Changes to This Policy</h3>
+            <p>We may update this policy from time to time. The "Last updated" date at the top will reflect any changes. Continued use of the site after changes constitutes acceptance.</p>
+          </div>
+
+          <!-- TERMS OF SERVICE -->
+          <div class="legal-pane" id="legalPane-terms">
+            <span class="legal-updated">Last updated: April 2026</span>
+
+            <h3>1. Acceptance of Terms</h3>
+            <p>By accessing kaizenai.dev you agree to be bound by these Terms of Service. If you do not agree, please do not use our website or services.</p>
+
+            <h3>2. Services</h3>
+            <p>Kaizen AI provides AI chatbot and voice agent solutions for businesses. Services are delivered under separate client agreements. The website itself is informational only — no services are purchased directly through this site.</p>
+
+            <h3>3. Intellectual Property</h3>
+            <p>All content on this website — including copy, design, graphics, and code — is the property of Kaizen AI and is protected by copyright law. You may not reproduce, distribute, or create derivative works without our written consent.</p>
+
+            <h3>4. Use of the Website</h3>
+            <p>You agree not to:</p>
+            <ul>
+              <li>Use the site for any unlawful purpose</li>
+              <li>Attempt to gain unauthorised access to any part of the site</li>
+              <li>Submit false or misleading information through our contact form</li>
+              <li>Use automated tools to scrape or copy site content</li>
+            </ul>
+
+            <h3>5. Disclaimer of Warranties</h3>
+            <p>The website is provided "as is" without warranties of any kind, express or implied. We do not warrant that the site will be uninterrupted, error-free, or free of viruses.</p>
+
+            <h3>6. Limitation of Liability</h3>
+            <p>To the fullest extent permitted by law, Kaizen AI shall not be liable for any indirect, incidental, or consequential damages arising from your use of this website or our services.</p>
+
+            <h3>7. Client Agreements</h3>
+            <p>Actual service delivery, pricing, payment terms, and deliverables are governed by individual client agreements signed separately. These Terms of Service apply only to your use of this website.</p>
+
+            <h3>8. Governing Law</h3>
+            <p>These terms are governed by the laws of Sri Lanka. Any disputes shall be subject to the exclusive jurisdiction of the courts of Sri Lanka.</p>
+
+            <h3>9. Changes to These Terms</h3>
+            <p>We may update these terms at any time. The "Last updated" date will reflect changes. Continued use of the site constitutes acceptance of the revised terms.</p>
+
+            <h3>10. Contact</h3>
+            <p>For any questions about these terms, reach out via our contact form or WhatsApp.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <!-- ════════ NAV ════════ -->
     <header id="nav">
       <div class="wrap nav-in">
@@ -2924,9 +3145,9 @@
           Never Miss a Lead. Never Lose a Customer.
         </p>
         <p class="h-sub fiu" data-d="2">
-          Answers every call, replies to every message, and books appointments automatically — 24/7/365, in any language.
+          Kaizen AI answers every call, replies to every message, and books appointments automatically — 24/7/365, in any language.
           Not a basic auto-reply.
-          Intelligent & natural conversations that understand your business and converts interest into paying customers.<br> No hiring. No training. No missed opportunities.
+          Intelligent & natural conversations that understand your business and convert interest into paying customers.<br> No hiring. No training. No missed opportunities.
         </p>
         <div class="h-btns fiu" data-d="3">
           <a href="#book-call" class="btn btn-g mag booking-trigger"
@@ -3299,7 +3520,7 @@
           data-d="2"
           style="max-width: 760px; margin: 14px auto 0; font-size: clamp(14px, 1.5vw, 16px);"
         >
-          Whether you’re a dental clinic, retail store, real estate agency, or law firm — it doesn’t matter. Your AI agent is fully trained on your business — products, services, pricing, availability, and FAQs. From day one, it operates like a top-performing employee — capturing opportunities and serving every customer without missing a single one.
+          Whether you’re a dental clinic, retail store, real estate agency, or law firm — it doesn’t matter. Your Kaizen AI agent is fully trained on your business — products, services, pricing, availability, and FAQs. From day one, it operates like a top-performing employee — capturing opportunities and serving every customer without missing a single one.
         </p>
         <p
           class="fiu body-md"
@@ -3415,7 +3636,7 @@
     <!-- ════════ BENEFITS ════════ -->
     <section id="benefits" class="sec">
       <div class="wrap" style="text-align: center">
-        <p class="eyebrow fiu">Why Businesses Choose Us</p>
+        <p class="eyebrow fiu">Why Businesses Choose Kaizen AI</p>
         <h2 class="h2 fiu" data-d="1">
           Key <span class="gold">Advantages</span>
         </h2>
@@ -3634,7 +3855,7 @@
               Stop Missing Leads.<br /><span class="gold">Start Growing.</span>
             </h2>
             <p class="cta-sub">
-              Book a free 20-minute call. We'll show you exactly where you're losing customers — and how to fix it.
+              Book a free 20-minute call with Kaizen AI. We'll show you exactly where you're losing customers — and how to fix it.
             </p>
             <div class="cta-btns">
               <a href="#book-call" class="btn btn-g booking-trigger"
@@ -3796,17 +4017,17 @@
           <div class="fc">
             <h5>Company</h5>
             <ul>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Case Studies</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#hero">About Us</a></li>
+              <li><a href="#testimonials">Case Studies</a></li>
+              <li><a href="https://medium.com/@kaizenaioffcial2026" target="_blank" rel="noopener noreferrer">Blog</a></li>
+              <li><a href="#book-call" class="booking-trigger">Contact</a></li>
             </ul>
           </div>
           <div class="fc">
             <h5>Legal</h5>
             <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#privacy" class="legal-trigger" data-tab="privacy">Privacy Policy</a></li>
+              <li><a href="#terms" class="legal-trigger" data-tab="terms">Terms of Service</a></li>
             </ul>
           </div>
         </div>
@@ -3870,11 +4091,51 @@
         document.body.classList.remove("modal-open");
         if (lastFocusedEl instanceof HTMLElement) lastFocusedEl.focus();
       }
+
+      /* ── Legal Modal ── */
+      const legalModal = document.getElementById("legalModal");
+      function openLegalModal(tab) {
+        if (!legalModal) return;
+        lastFocusedEl = document.activeElement;
+        legalModal.querySelectorAll(".legal-tab").forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.tab === tab);
+        });
+        legalModal.querySelectorAll(".legal-pane").forEach(pane => {
+          pane.classList.toggle("active", pane.id === "legalPane-" + tab);
+        });
+        legalModal.classList.add("open");
+        legalModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+      }
+      function closeLegalModal() {
+        if (!legalModal) return;
+        legalModal.classList.remove("open");
+        legalModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-open");
+        if (lastFocusedEl instanceof HTMLElement) lastFocusedEl.focus();
+      }
+      legalModal?.addEventListener("click", (e) => {
+        if (e.target.closest("[data-close-legal-modal='true']")) closeLegalModal();
+        const tab = e.target.closest(".legal-tab");
+        if (tab) {
+          legalModal.querySelectorAll(".legal-tab").forEach(btn => btn.classList.remove("active"));
+          legalModal.querySelectorAll(".legal-pane").forEach(pane => pane.classList.remove("active"));
+          tab.classList.add("active");
+          document.getElementById("legalPane-" + tab.dataset.tab)?.classList.add("active");
+        }
+      });
+
       document.addEventListener("click", (e) => {
         const bookingTrigger = e.target.closest(".booking-trigger");
         if (bookingTrigger) {
           e.preventDefault();
           openBookingModal();
+          return;
+        }
+        const legalTrigger = e.target.closest(".legal-trigger");
+        if (legalTrigger) {
+          e.preventDefault();
+          openLegalModal(legalTrigger.dataset.tab);
           return;
         }
         const a = e.target.closest('a[href^="#"]');
@@ -3944,6 +4205,7 @@
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
           if (bookingModal?.classList.contains("open")) closeBookingModal();
+          if (legalModal?.classList.contains("open")) closeLegalModal();
           closeDrawer();
         }
       });
