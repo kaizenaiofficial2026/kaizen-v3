@@ -1070,21 +1070,25 @@
       .wave {
         position: relative;
         height: 88px;
+        width: 100%;
         margin: 8px 0 24px;
-        display: grid;
-        place-items: center;
+        display: flex;
+        align-items: center;
       }
       .wave-bars {
         display: flex;
         align-items: center;
         gap: 4px;
         height: 100%;
+        width: 100%;
       }
       .wave-bars span {
         width: 3px;
+        height: 40px;
         background: var(--g2);
         border-radius: 3px;
         transform-origin: center;
+        flex-shrink: 0;
       }
       .wave-ring {
         position: absolute;
@@ -2768,7 +2772,7 @@
       }
       .modal-card {
         position: relative;
-        width: min(100%, 640px);
+        width: min(calc(100% - 48px), 880px);
         max-height: 90vh;
         overflow-y: auto;
         background: var(--bg-card);
@@ -2880,6 +2884,149 @@
         outline: none;
         border-color: var(--g2);
         box-shadow: 0 0 0 4px oklch(0.82 0.14 var(--accent-h) / 0.14);
+      }
+
+      /* ── Native select custom arrow ── */
+      .field select {
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23888' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 16px;
+        padding-right: 40px;
+        cursor: pointer;
+      }
+
+      /* ── Phone field ── */
+      .phone-wrap {
+        display: flex;
+        border: 1px solid var(--bd);
+        border-radius: 10px;
+        overflow: visible;
+        position: relative;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+      .phone-wrap:focus-within {
+        border-color: var(--g2);
+        box-shadow: 0 0 0 4px oklch(0.82 0.14 var(--accent-h) / 0.14);
+      }
+      .country-sel { position: relative; flex-shrink: 0; }
+      .country-trigger {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 13px 10px 13px 14px;
+        background: transparent;
+        border: none;
+        border-right: 1px solid var(--bd);
+        border-radius: 10px 0 0 10px;
+        cursor: pointer;
+        color: var(--tx);
+        font: inherit;
+        font-size: 14px;
+        white-space: nowrap;
+        transition: background 0.2s;
+      }
+      .country-trigger:hover { background: oklch(0.82 0.14 var(--accent-h) / 0.06); }
+      .country-flag { font-size: 19px; line-height: 1; }
+      .country-code-lbl { font-size: 13px; color: var(--tx-2); letter-spacing: 0.02em; }
+      .country-chev { width: 14px; height: 14px; color: var(--tx-3); transition: transform 0.25s; flex-shrink: 0; }
+      .country-sel.open .country-chev { transform: rotate(180deg); color: var(--g2); }
+      .country-list {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: calc(100% + 6px);
+        z-index: 200;
+        width: 290px;
+        max-height: 260px;
+        background: var(--bg-card);
+        border: 1px solid var(--g2);
+        border-radius: 12px;
+        box-shadow: 0 20px 48px rgba(0,0,0,0.28);
+        overflow: hidden;
+        flex-direction: column;
+      }
+      .country-sel.open .country-list { display: flex; }
+      .country-search {
+        padding: 10px 14px;
+        font: inherit;
+        font-size: 13px;
+        background: var(--bg);
+        color: var(--tx);
+        border: none;
+        border-bottom: 1px solid var(--bd);
+        outline: none;
+        flex-shrink: 0;
+      }
+      .country-search::placeholder { color: var(--tx-3); }
+      .country-items { overflow-y: auto; flex: 1; }
+      .country-items::-webkit-scrollbar { width: 4px; }
+      .country-items::-webkit-scrollbar-thumb { background: var(--bd-2); border-radius: 4px; }
+      .country-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 14px;
+        cursor: pointer;
+        font-size: 13px;
+        color: var(--tx-2);
+        transition: background 0.15s, color 0.15s;
+      }
+      .country-item:hover, .country-item.ci-active { background: oklch(0.82 0.14 var(--accent-h) / 0.1); color: var(--tx); }
+      .country-item-flag { font-size: 17px; flex-shrink: 0; }
+      .country-item-name { flex: 1; }
+      .country-item-dial { color: var(--tx-3); font-size: 11.5px; font-family: "JetBrains Mono", monospace; }
+      .phone-input {
+        flex: 1;
+        padding: 13px 14px;
+        font: inherit;
+        font-size: 14px;
+        background: transparent;
+        color: var(--tx);
+        border: none;
+        border-radius: 0 10px 10px 0;
+        outline: none;
+        min-width: 0;
+      }
+      .phone-input::placeholder { color: var(--tx-3); }
+      .field-error {
+        font-size: 11px;
+        color: #e07878;
+        min-height: 14px;
+        letter-spacing: 0.04em;
+        display: none;
+      }
+      .field-error.show { display: block; }
+
+      /* ── Budget buttons ── */
+      .budget-btns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .budget-btn {
+        padding: 13px 14px;
+        font: inherit;
+        font-size: 14px;
+        background: var(--bg);
+        color: var(--tx-2);
+        border: 1px solid var(--bd);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: border-color 0.25s, background 0.25s, color 0.25s, box-shadow 0.25s;
+        text-align: center;
+      }
+      .budget-btn:hover {
+        border-color: var(--bd-2);
+        color: var(--tx);
+      }
+      .budget-btn.selected {
+        border-color: var(--g2);
+        background: oklch(0.82 0.14 var(--accent-h) / 0.1);
+        color: var(--g2);
+        box-shadow: 0 0 0 4px oklch(0.82 0.14 var(--accent-h) / 0.12);
       }
 
       /* ── Custom Select ── */
@@ -3888,48 +4035,48 @@
               <!-- voice wave -->
               <div class="wave" id="wave">
                 <div class="wave-bars" id="waveBars">
-                  <span style="height: 54.608185px; opacity: 0.815408"></span
-                  ><span style="height: 65.01013px; opacity: 0.895528"></span
-                  ><span style="height: 73.315294px; opacity: 0.956073"></span
-                  ><span style="height: 78.495371px; opacity: 0.991669"></span
-                  ><span style="height: 79.888362px; opacity: 0.999155"></span
-                  ><span style="height: 77.307168px; opacity: 0.977868"></span
-                  ><span style="height: 71.071634px; opacity: 0.929696"></span
-                  ><span style="height: 61.958064px; opacity: 0.858917"></span
-                  ><span style="height: 51.075172px; opacity: 0.771812"></span
-                  ><span style="height: 39.688624px; opacity: 0.676113"></span
-                  ><span style="height: 29.025391px; opacity: 0.580316"></span
-                  ><span style="height: 20.092292px; opacity: 0.492924"></span
-                  ><span style="height: 13.539867px; opacity: 0.421693"></span
-                  ><span style="height: 9.593665px; opacity: 0.372947"></span
-                  ><span style="height: 8.062123px; opacity: 0.351013"></span
-                  ><span style="height: 8.415738px; opacity: 0.357838"></span
-                  ><span style="height: 9.919221px; opacity: 0.392815"></span
-                  ><span style="height: 11.789094px; opacity: 0.452841"></span
-                  ><span style="height: 13.345516px; opacity: 0.532586"></span
-                  ><span style="height: 14.129607px; opacity: 0.624973"></span
-                  ><span style="height: 13.965599px; opacity: 0.721801"></span
-                  ><span style="height: 12.958976px; opacity: 0.814474"></span
-                  ><span style="height: 11.435099px; opacity: 0.894767"></span
-                  ><span style="height: 9.834795px; opacity: 0.955552"></span
-                  ><span style="height: 8.591794px; opacity: 0.991434"></span
-                  ><span style="height: 8.019885px; opacity: 0.999228"></span
-                  ><span style="height: 8.234907px; opacity: 0.978241"></span
-                  ><span style="height: 9.128641px; opacity: 0.930338"></span
-                  ><span style="height: 10.400114px; opacity: 0.859769"></span
-                  ><span style="height: 11.637157px; opacity: 0.7728"></span
-                  ><span style="height: 12.429872px; opacity: 0.677149"></span
-                  ><span style="height: 12.490346px; opacity: 0.581307"></span
-                  ><span style="height: 11.75095px; opacity: 0.493782"></span
-                  ><span style="height: 10.417437px; opacity: 0.422343"></span
-                  ><span style="height: 8.962055px; opacity: 0.373331"></span
-                  ><span style="height: 8.054137px; opacity: 0.351097"></span
-                  ><span style="height: 8.438828px; opacity: 0.357613"></span
-                  ><span style="height: 10.78596px; opacity: 0.392303"></span
-                  ><span style="height: 15.538251px; opacity: 0.452086"></span
-                  ><span style="height: 22.789534px; opacity: 0.531657"></span
-                  ><span style="height: 32.219111px; opacity: 0.623951"></span
-                  ><span style="height: 43.098395px; opacity: 0.720776"></span>
+                  <span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span
+                  ><span></span>
                 </div>
                 <div class="wave-ring"></div>
               </div>
@@ -5072,20 +5219,75 @@
         </div>
         <form class="modal-form" id="bookingForm">
           <div class="field">
-            <label>Full name</label>
-            <input name="name" type="text" required="" />
+            <label>First Name</label>
+            <input name="first_name" type="text" placeholder="First Name" required="" />
           </div>
           <div class="field">
-            <label>Work email</label>
-            <input name="email" type="email" required="" />
+            <label>Last Name</label>
+            <input name="last_name" type="text" placeholder="Last Name" required="" />
+          </div>
+          <div class="field">
+            <label>Work Email</label>
+            <input name="email" type="email" placeholder="you@company.com" required="" />
           </div>
           <div class="field">
             <label>Company</label>
-            <input name="company" type="text" required="" />
+            <input name="company" type="text" placeholder="Your company" required="" />
+          </div>
+          <div class="field full">
+            <label>Company Website</label>
+            <input name="website" type="url" placeholder="https://yourcompany.com" />
+          </div>
+          <div class="field full" id="phoneField">
+            <label>Phone Number</label>
+            <div class="phone-wrap">
+              <div class="country-sel" id="countrySel">
+                <button type="button" class="country-trigger" id="countryTrigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="country-flag" id="countryFlag">🇱🇰</span>
+                  <span class="country-code-lbl" id="countryCodeLbl">+94</span>
+                  <svg class="country-chev" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="country-list" id="countryList" role="listbox">
+                  <input class="country-search" id="countrySearch" type="text" placeholder="Search country…" autocomplete="off" />
+                  <div class="country-items" id="countryItems"></div>
+                </div>
+              </div>
+              <input class="phone-input" name="phone" id="phoneInput" type="tel" placeholder="Phone number" autocomplete="tel" />
+            </div>
+            <span class="field-error" id="phoneError">Please enter a valid phone number</span>
           </div>
           <div class="field">
-            <label>Phone</label>
-            <input name="phone" type="tel" />
+            <label>Your Role</label>
+            <select name="role">
+              <option value="" disabled selected>Select your role</option>
+              <option>Founder / CEO</option>
+              <option>Operations Manager</option>
+              <option>Marketing Manager</option>
+              <option>Sales Manager</option>
+              <option>IT / Tech Lead</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Company Size</label>
+            <select name="company_size">
+              <option value="" disabled selected>Number of employees</option>
+              <option>1 – 10</option>
+              <option>11 – 50</option>
+              <option>51 – 200</option>
+              <option>201 – 500</option>
+              <option>500+</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label>Budget Range</label>
+            <div class="budget-btns">
+              <button type="button" class="budget-btn" data-val="$15K - $50K">$15K – $50K</button>
+              <button type="button" class="budget-btn" data-val="$50K - $150K">$50K – $150K</button>
+              <button type="button" class="budget-btn" data-val="$150K - $500K">$150K – $500K</button>
+              <button type="button" class="budget-btn" data-val="Not Sure Yet">Not Sure Yet</button>
+            </div>
+            <input type="hidden" name="budget" id="budgetHidden" />
           </div>
           <div class="field full">
             <label for="interestTrigger">What are you interested in?</label>
@@ -5302,11 +5504,11 @@
             </div>
           </div>
           <div class="field full">
-            <label>What should we know before the call?</label>
+            <label>Tell Us About Your Project</label>
             <textarea
               name="notes"
               rows="4"
-              placeholder="Current lead flow, missed calls, support volume, or the process you want automated."
+              placeholder="What challenges are you facing? What does success look like for your business?"
             ></textarea>
           </div>
           <div class="modal-foot">
@@ -5601,7 +5803,10 @@
 
         const waveBars = qs("#waveBars");
         if (waveBars) {
-          for (let i = 0; i < 42; i++)
+          waveBars.innerHTML = "";
+          const barW = 3, barGap = 4;
+          const barCount = Math.max(20, Math.floor((waveBars.offsetWidth || 320) / (barW + barGap)));
+          for (let i = 0; i < barCount; i++)
             waveBars.appendChild(document.createElement("span"));
           const bars = waveBars.children;
           let t = 0;
@@ -5914,6 +6119,101 @@
             if (open && !interestSel.contains(e.target)) closeDropdown();
           });
         }
+
+        // Budget buttons
+        const budgetBtns = qsa(".budget-btn");
+        const budgetHidden = qs("#budgetHidden");
+        budgetBtns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            budgetBtns.forEach(b => b.classList.remove("selected"));
+            btn.classList.add("selected");
+            if (budgetHidden) budgetHidden.value = btn.dataset.val;
+          });
+        });
+
+        // ── Country picker ──
+        const COUNTRIES = [
+          {f:"🇱🇰",n:"Sri Lanka",d:"+94"},{f:"🇺🇸",n:"United States",d:"+1"},
+          {f:"🇬🇧",n:"United Kingdom",d:"+44"},{f:"🇦🇺",n:"Australia",d:"+61"},
+          {f:"🇨🇦",n:"Canada",d:"+1"},{f:"🇮🇳",n:"India",d:"+91"},
+          {f:"🇸🇬",n:"Singapore",d:"+65"},{f:"🇦🇪",n:"UAE",d:"+971"},
+          {f:"🇩🇪",n:"Germany",d:"+49"},{f:"🇫🇷",n:"France",d:"+33"},
+          {f:"🇳🇱",n:"Netherlands",d:"+31"},{f:"🇯🇵",n:"Japan",d:"+81"},
+          {f:"🇲🇾",n:"Malaysia",d:"+60"},{f:"🇮🇩",n:"Indonesia",d:"+62"},
+          {f:"🇵🇭",n:"Philippines",d:"+63"},{f:"🇿🇦",n:"South Africa",d:"+27"},
+          {f:"🇳🇬",n:"Nigeria",d:"+234"},{f:"🇧🇷",n:"Brazil",d:"+55"},
+          {f:"🇲🇽",n:"Mexico",d:"+52"},{f:"🇳🇿",n:"New Zealand",d:"+64"},
+          {f:"🇰🇷",n:"South Korea",d:"+82"},{f:"🇨🇳",n:"China",d:"+86"},
+          {f:"🇵🇰",n:"Pakistan",d:"+92"},{f:"🇧🇩",n:"Bangladesh",d:"+880"},
+          {f:"🇮🇹",n:"Italy",d:"+39"},{f:"🇪🇸",n:"Spain",d:"+34"},
+          {f:"🇵🇹",n:"Portugal",d:"+351"},{f:"🇸🇪",n:"Sweden",d:"+46"},
+          {f:"🇨🇭",n:"Switzerland",d:"+41"},{f:"🇹🇭",n:"Thailand",d:"+66"},
+          {f:"🇻🇳",n:"Vietnam",d:"+84"},{f:"🇶🇦",n:"Qatar",d:"+974"},
+          {f:"🇸🇦",n:"Saudi Arabia",d:"+966"},{f:"🇰🇪",n:"Kenya",d:"+254"},
+          {f:"🇬🇭",n:"Ghana",d:"+233"},{f:"🇦🇷",n:"Argentina",d:"+54"},
+          {f:"🇨🇴",n:"Colombia",d:"+57"},{f:"🇵🇪",n:"Peru",d:"+51"},
+          {f:"🇮🇱",n:"Israel",d:"+972"},{f:"🇹🇷",n:"Turkey",d:"+90"},
+        ];
+        let selectedDial = "+94";
+        const countrySelEl = qs("#countrySel");
+        const countryTriggerEl = qs("#countryTrigger");
+        const countryFlagEl = qs("#countryFlag");
+        const countryCodeLblEl = qs("#countryCodeLbl");
+        const countryItemsEl = qs("#countryItems");
+        const countrySearchEl = qs("#countrySearch");
+        const phoneInputEl = qs("#phoneInput");
+        const phoneErrorEl = qs("#phoneError");
+
+        function renderCountries(list) {
+          if (!countryItemsEl) return;
+          countryItemsEl.innerHTML = "";
+          list.forEach(c => {
+            const li = document.createElement("div");
+            li.className = "country-item" + (c.d === selectedDial && c.n === (countryFlagEl?.title||"Sri Lanka") ? " ci-active" : "");
+            li.setAttribute("role","option");
+            li.innerHTML = `<span class="country-item-flag">${c.f}</span><span class="country-item-name">${c.n}</span><span class="country-item-dial">${c.d}</span>`;
+            li.addEventListener("click", () => {
+              selectedDial = c.d;
+              if (countryFlagEl) { countryFlagEl.textContent = c.f; countryFlagEl.title = c.n; }
+              if (countryCodeLblEl) countryCodeLblEl.textContent = c.d;
+              countrySelEl?.classList.remove("open");
+              if (countryTriggerEl) countryTriggerEl.setAttribute("aria-expanded","false");
+              if (countrySearchEl) countrySearchEl.value = "";
+              renderCountries(COUNTRIES);
+            });
+            countryItemsEl.appendChild(li);
+          });
+        }
+        if (countrySelEl) {
+          renderCountries(COUNTRIES);
+          countryTriggerEl?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = countrySelEl.classList.toggle("open");
+            countryTriggerEl.setAttribute("aria-expanded", isOpen);
+            if (isOpen) setTimeout(() => countrySearchEl?.focus(), 50);
+          });
+          countrySearchEl?.addEventListener("input", () => {
+            const q = countrySearchEl.value.toLowerCase();
+            renderCountries(q ? COUNTRIES.filter(c => c.n.toLowerCase().includes(q) || c.d.includes(q)) : COUNTRIES);
+          });
+          document.addEventListener("click", (e) => {
+            if (countrySelEl && !countrySelEl.contains(e.target)) {
+              countrySelEl.classList.remove("open");
+              countryTriggerEl?.setAttribute("aria-expanded","false");
+            }
+          });
+        }
+
+        // Phone validation
+        phoneInputEl?.addEventListener("blur", () => {
+          const digits = (phoneInputEl.value || "").replace(/\D/g,"");
+          if (phoneInputEl.value && digits.length < 6) {
+            phoneErrorEl?.classList.add("show");
+          } else {
+            phoneErrorEl?.classList.remove("show");
+          }
+        });
+        phoneInputEl?.addEventListener("input", () => { if (phoneErrorEl?.classList.contains("show")) phoneErrorEl.classList.remove("show"); });
 
         const EMAILJS_SERVICE_ID = "service_l45vbyb";
         const EMAILJS_TEMPLATE_ID = "template_1vi7v91";
