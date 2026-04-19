@@ -18,13 +18,6 @@
           } else root.dataset.theme = t;
         }
         applyTheme(tweaks.theme || "auto");
-        qs("#themeBtn")?.addEventListener("click", () => {
-          const next = root.dataset.theme === "dark" ? "light" : "dark";
-          tweaks.theme = next;
-          applyTheme(next);
-          saveTweaks();
-        });
-
         function applyHue(h) {
           root.style.setProperty("--accent-h", h);
         }
