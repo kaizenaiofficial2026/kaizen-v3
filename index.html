@@ -5920,31 +5920,29 @@
 
         const halo = qs("#halo");
         const dot = qs("#halo-dot");
-        let tx = -100,
-          ty = -100,
-          cx = -100,
-          cy = -100;
-        window.addEventListener(
-          "mousemove",
-          (e) => {
-            tx = e.clientX;
-            ty = e.clientY;
-            if (dot) {
-              dot.style.transform =
-                "translate(calc(" + tx + "px - 50%), calc(" + ty + "px - 50%))";
-            }
-          },
-          { passive: true },
-        );
-        (function loop() {
-          cx += (tx - cx) * 0.12;
-          cy += (ty - cy) * 0.12;
-          if (halo) {
-            halo.style.transform =
-              "translate(calc(" + cx + "px - 50%), calc(" + cy + "px - 50%))";
+        let tx = -100, ty = -100, cx = -100, cy = -100;
+        let haloRaf = null;
+
+        function haloLoop() {
+          const dx = tx - cx, dy = ty - cy;
+          cx += dx * 0.12;
+          cy += dy * 0.12;
+          if (halo) halo.style.transform = "translate(calc(" + cx + "px - 50%), calc(" + cy + "px - 50%))";
+          // Stop the loop once the halo has caught up (within 0.5px)
+          if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) {
+            haloRaf = null;
+          } else {
+            haloRaf = requestAnimationFrame(haloLoop);
           }
-          requestAnimationFrame(loop);
-        })();
+        }
+
+        window.addEventListener("mousemove", (e) => {
+          tx = e.clientX;
+          ty = e.clientY;
+          if (dot) dot.style.transform = "translate(calc(" + tx + "px - 50%), calc(" + ty + "px - 50%))";
+          // Only start the RAF loop if it isn't already running
+          if (!haloRaf) haloRaf = requestAnimationFrame(haloLoop);
+        }, { passive: true });
         qsa("a, button, .tilt, summary").forEach((el) => {
           el.addEventListener("mouseenter", () =>
             document.body.classList.add("halo-hover"),
