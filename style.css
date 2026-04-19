@@ -637,9 +637,11 @@ body.grain-on #grain {
 ══════════════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  min-height: 100vh;
-  padding: calc(var(--nav-h) + 36px) 0 60px;
+  height: 100dvh;
+  padding: calc(var(--nav-h) + 12px) 0 80px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Editorial chrome corners */
@@ -718,12 +720,12 @@ body.grain-on #grain {
 .hero-grid {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 60px 40px 0;
+  padding: 24px 40px 0;
   display: grid;
   grid-template-columns: 1.15fr 1fr;
   gap: 72px;
   align-items: center;
-  min-height: calc(100vh - var(--nav-h) - 120px);
+  flex: 1;
   position: relative;
 }
 @media (max-width: 1040px) {
@@ -776,7 +778,7 @@ body.grain-on #grain {
 
 .hero-h {
   font-family: "Playfair Display", serif;
-  font-size: clamp(56px, 8.6vw, 132px);
+  font-size: clamp(40px, 5.8vw, 88px);
   font-weight: 900;
   line-height: 0.9;
   letter-spacing: -0.045em;
@@ -835,8 +837,8 @@ body.grain-on #grain {
 }
 
 .hero-sub {
-  margin-top: 32px;
-  font-size: clamp(16px, 1.2vw, 19px);
+  margin-top: 16px;
+  font-size: clamp(14px, 1vw, 16px);
   line-height: 1.55;
   color: var(--tx-2);
   max-width: 520px;
@@ -846,12 +848,12 @@ body.grain-on #grain {
 .hero-ctas {
   display: flex;
   gap: 12px;
-  margin-top: 36px;
+  margin-top: 20px;
   flex-wrap: wrap;
 }
 
 .hero-trust {
-  margin-top: 56px;
+  margin-top: 12px;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -902,7 +904,7 @@ body.grain-on #grain {
 /* Voice card (right column) */
 .hero-right {
   position: relative;
-  min-height: 500px;
+  min-height: 0;
 }
 .voice-card {
   position: relative;
@@ -1188,8 +1190,8 @@ body.grain-on #grain {
 
 /* Hero ticker */
 .hero-ticker {
-  margin-top: 80px;
-  padding: 20px 0;
+  margin-top: auto;
+  padding: 10px 0;
   border-top: 1px solid var(--bd);
   border-bottom: 1px solid var(--bd);
   overflow: hidden;
@@ -1252,7 +1254,7 @@ body.grain-on #grain {
 
 .scroll-hint {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
