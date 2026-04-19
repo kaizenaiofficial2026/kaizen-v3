@@ -1284,6 +1284,10 @@
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
       }
+      .ht-set {
+        display: flex;
+        flex-shrink: 0;
+      }
       .ht-item {
         display: inline-flex;
         align-items: baseline;
@@ -4036,36 +4040,24 @@
       <!-- Running stat ticker -->
       <div class="hero-ticker">
         <div class="ht-track">
-          <div class="ht-item">
-            <span class="ht-n">148</span
-            ><span class="ht-l">calls answered today</span>
+          <div class="ht-set">
+            <div class="ht-item"><span class="ht-n">148</span><span class="ht-l">calls answered today</span></div>
+            <div class="ht-item"><span class="ht-n">0</span><span class="ht-l">missed leads</span></div>
+            <div class="ht-item"><span class="ht-n">&lt; 5s</span><span class="ht-l">avg response</span></div>
+            <div class="ht-item"><span class="ht-n">30+</span><span class="ht-l">languages handled</span></div>
+            <div class="ht-item"><span class="ht-n">24/7/365</span><span class="ht-l">always on duty</span></div>
+            <div class="ht-item"><span class="ht-n">2am</span><span class="ht-l">appointments booked</span></div>
+            <div class="ht-item"><span class="ht-n">&lt; 5s</span><span class="ht-l">avg response</span></div>
           </div>
-          <div class="ht-item">
-            <span class="ht-n">0</span><span class="ht-l">missed leads</span>
-          </div>
-          <div class="ht-item">
-            <span class="ht-n">&lt; 5s</span
-            ><span class="ht-l">avg response</span>
-          </div>
-          <div class="ht-item">
-            <span class="ht-n">30+</span
-            ><span class="ht-l">languages handled</span>
-          </div>
-          <div class="ht-item">
-            <span class="ht-n">24/7/365</span
-            ><span class="ht-l">always on duty</span>
-          </div>
-          <div class="ht-item">
-            <span class="ht-n">2am</span
-            ><span class="ht-l">appointments booked</span>
-          </div>
-          <div class="ht-item">
-            <span class="ht-n">&lt; 5s</span
-            ><span class="ht-l">avg response</span>
-          </div>
-          <div class="ht-item">
-            <span class="ht-n">148</span
-            ><span class="ht-l">calls answered today</span>
+          <div class="ht-set" aria-hidden="true">
+            <div class="ht-item"><span class="ht-n">148</span><span class="ht-l">calls answered today</span></div>
+            <div class="ht-item"><span class="ht-n">0</span><span class="ht-l">missed leads</span></div>
+            <div class="ht-item"><span class="ht-n">&lt; 5s</span><span class="ht-l">avg response</span></div>
+            <div class="ht-item"><span class="ht-n">30+</span><span class="ht-l">languages handled</span></div>
+            <div class="ht-item"><span class="ht-n">24/7/365</span><span class="ht-l">always on duty</span></div>
+            <div class="ht-item"><span class="ht-n">2am</span><span class="ht-l">appointments booked</span></div>
+            <div class="ht-item"><span class="ht-n">&lt; 5s</span><span class="ht-l">avg response</span></div>
+            <div class="ht-item"><span class="ht-n">148</span><span class="ht-l">calls answered today</span></div>
           </div>
         </div>
       </div>
