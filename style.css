@@ -2784,14 +2784,14 @@ body.modal-open {
   border-bottom: 1px solid var(--bd);
 }
 .modal-top .kicker {
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.15em;
   color: var(--g2);
   text-transform: uppercase;
 }
 .modal-top h3 {
   font-family: "Playfair Display", serif;
-  font-size: clamp(26px, 4vw, 36px);
+  font-size: clamp(30px, 4vw, 42px);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -2799,7 +2799,7 @@ body.modal-open {
   margin: 12px 0 10px;
 }
 .modal-top p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--tx-2);
   max-width: 460px;
@@ -2828,7 +2828,7 @@ body.modal-open {
   grid-column: 1 / -1;
 }
 .field label {
-  font-size: 10.5px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2839,7 +2839,7 @@ body.modal-open {
 .field textarea {
   padding: 13px 14px;
   font: inherit;
-  font-size: 14px;
+  font-size: 16px;
   background: var(--bg);
   color: var(--tx);
   border: 1px solid var(--bd);
