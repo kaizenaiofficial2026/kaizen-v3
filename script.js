@@ -777,13 +777,15 @@
     chatInput.disabled = true;
     const typingEl = addTyping();
     try {
-      const reply = await window.claude.complete({
-        system: SYSTEM,
-        messages: chatHistory,
+      const res = await fetch("https://kaizen-demo-backend.vercel.app/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ system: SYSTEM, messages: chatHistory }),
       });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
       typingEl.remove();
-      const botMsg =
-        typeof reply === "string" ? reply : reply?.content || String(reply);
+      const botMsg = data.reply ?? data.content ?? data.message ?? String(data);
       addMsg("bot", botMsg);
       chatHistory.push({ role: "assistant", content: botMsg });
     } catch (err) {
