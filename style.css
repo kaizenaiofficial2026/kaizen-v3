@@ -872,7 +872,7 @@ body.grain-on #grain {
 
 .hero-sub {
   margin-top: 16px;
-  font-size: clamp(14px, 1vw, 16px);
+  font-size: clamp(17px, 1.4vw, 22px);
   line-height: 1.55;
   color: var(--tx-2);
   max-width: 520px;
@@ -3856,7 +3856,7 @@ body.modal-open {
     padding-bottom: 48px;
   }
   .hero-sub {
-    font-size: 14px;
+    font-size: 17px;
   }
   .hero-ctas {
     flex-direction: column;
