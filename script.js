@@ -1,5 +1,21 @@
 (() => {
   "use strict";
+
+  // Proportional desktop scaling: lock layout to 1728px reference width
+  // so every desktop window size renders the same composition.
+  const REF_WIDTH = 1728;
+  const MOBILE_MAX = 760;
+  function applyPageZoom() {
+    const w = window.innerWidth;
+    if (w > MOBILE_MAX) {
+      document.body.style.setProperty("--page-zoom", w / REF_WIDTH);
+    } else {
+      document.body.style.removeProperty("--page-zoom");
+    }
+  }
+  applyPageZoom();
+  window.addEventListener("resize", applyPageZoom);
+
   const defaults = window.KAIZEN_TWEAKS || {};
   const LS_KEY = "kaizen_tweaks_v1";
   let tweaks = { ...defaults };
