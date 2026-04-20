@@ -3437,9 +3437,9 @@ body.modal-open {
 }
 .chat-bubble .cb-icon-close {
   position: absolute;
-  left: 16px;
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
   opacity: 0;
 }
 .chat-bubble.open .cb-icon-chat {
@@ -3448,7 +3448,7 @@ body.modal-open {
 }
 .chat-bubble.open .cb-icon-close {
   opacity: 1;
-  transform: translateY(-50%) rotate(0);
+  transform: translate(-50%, -50%) rotate(0);
 }
 .chat-bubble .cb-label {
   transition:
@@ -3461,7 +3461,10 @@ body.modal-open {
   overflow: hidden;
 }
 .chat-bubble.open {
-  padding: 14px;
+  padding: 0;
+  width: 56px;
+  height: 56px;
+  justify-content: center;
 }
 .cb-pulse {
   position: absolute;
