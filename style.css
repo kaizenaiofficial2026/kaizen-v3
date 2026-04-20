@@ -3811,3 +3811,176 @@ body.modal-open {
     font-size: 40px;
   }
 }
+
+/* ══════ Mobile polish ══════
+   Final-pass mobile adjustments. Sits last in the file so it
+   wins specificity ties against earlier section rules. */
+@media (max-width: 760px) {
+  /* Section spacing — tighten vertical rhythm */
+  .section {
+    padding: 56px 0;
+  }
+  .sec-head {
+    margin-bottom: 32px;
+  }
+
+  /* Hero — pad bottom so trust marquee isn't clipped by ticker */
+  .hero {
+    height: auto;
+    min-height: 100dvh;
+    padding-bottom: 48px;
+  }
+  .hero-sub {
+    font-size: 14px;
+  }
+  .hero-ctas .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+  .hero-trust {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .voice-card {
+    padding: 18px;
+    transform: none;
+  }
+
+  /* Logos marquee — slower + tighter on small screens */
+  .logos-track {
+    gap: 36px;
+    animation-duration: 50s;
+  }
+
+  /* Comparison cards */
+  .cmp-col {
+    padding: 32px 22px;
+  }
+  .cmp-col-head h3 {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+  .cmp-list li {
+    padding: 12px 0 12px 24px;
+    font-size: 14px;
+  }
+
+  /* Solutions cards */
+  .sol-big,
+  .sol-feat {
+    min-height: auto;
+  }
+  .sol-card {
+    padding: 24px 20px;
+  }
+  .sol-big .sol-icon,
+  .sol-feat .sol-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .sol-big .sol-t {
+    font-size: clamp(22px, 6vw, 30px);
+  }
+  .sol-feat .sol-t {
+    font-size: 18px;
+  }
+
+  /* Benefits */
+  .ben {
+    padding: 28px 22px;
+  }
+  .ben-metric {
+    font-size: clamp(36px, 11vw, 52px);
+  }
+  .ben h3 {
+    font-size: 20px;
+  }
+
+  /* Process steps */
+  .pr-step {
+    padding: 28px 22px;
+  }
+  .pr-n {
+    font-size: clamp(44px, 13vw, 80px);
+  }
+  .pr-step h3 {
+    font-size: 20px;
+  }
+
+  /* Testimonial / quote */
+  .q-mark {
+    font-size: clamp(72px, 22vw, 140px);
+    left: 16px;
+  }
+  .quote-main blockquote {
+    font-size: clamp(18px, 5vw, 26px);
+  }
+
+  /* FAQ */
+  .faq-q {
+    font-size: 16px;
+  }
+  .faq-list summary,
+  .faq-list .faq-a {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /* CTA */
+  .cta-btns {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cta-btns .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  /* Drawer — keep big serif legible on narrow screens */
+  .drawer-inner {
+    gap: 12px;
+    padding: 24px;
+  }
+  .drawer-inner a {
+    font-size: clamp(28px, 8vw, 38px);
+  }
+
+  /* Chat widget — fit short viewports */
+  .chat-panel {
+    width: calc(100vw - 24px);
+    right: 12px;
+    height: min(calc(100dvh - 96px), 720px);
+  }
+  .c-msg {
+    max-width: 88%;
+  }
+
+  /* Floating UI — keep clear of safe-area on phones */
+  .chat-bubble {
+    bottom: max(16px, env(safe-area-inset-bottom));
+    right: 16px;
+  }
+}
+
+/* Touch devices — promote hover-only states to always-on */
+@media (hover: none) {
+  .nav-ul a::after {
+    display: none;
+  }
+}
+
+/* Very narrow phones (<= 380px) — extra tightening */
+@media (max-width: 380px) {
+  .wrap,
+  .nav-in {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .hero-grid {
+    padding: 32px 18px 0;
+  }
+  .corner.tl,
+  .corner.tr {
+    font-size: 9.5px;
+  }
+}
