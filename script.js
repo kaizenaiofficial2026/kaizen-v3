@@ -394,8 +394,66 @@
       modalSuccess?.classList.remove("show");
       if (modalForm) modalForm.style.display = "";
       if (modalStatus) modalStatus.textContent = "";
+      goToStep(1);
     }, 400);
   }
+
+  // ── Multi-step form ──
+  const stepHeadings = {
+    1: 'Tell us a bit <span class="italic gold">about you.</span>',
+    2: 'Tell us about <span class="italic gold">your business.</span>',
+    3: 'What are you <span class="italic gold">looking for?</span>',
+  };
+  const stepDescs = {
+    1: "Your name and contact so we know who we're talking to.",
+    2: "A few details about your company and team.",
+    3: "Your budget and what you want to automate.",
+  };
+
+  let currentStep = 1;
+  const formSteps = qsa(".form-step");
+  const stepDots  = qsa(".step-dot");
+  const stepLines = qsa(".step-line");
+  const stepHeadingEl = qs(".step-heading");
+  const stepDescEl    = qs(".step-desc");
+
+  function goToStep(n) {
+    currentStep = n;
+    formSteps.forEach((s) => s.classList.toggle("active", +s.dataset.step === n));
+    stepDots.forEach((d) => {
+      const i = +d.dataset.step;
+      d.classList.toggle("active", i === n);
+      d.classList.toggle("done", i < n);
+    });
+    stepLines.forEach((l, i) => l.classList.toggle("done", i < n - 1));
+    if (stepHeadingEl) stepHeadingEl.innerHTML = stepHeadings[n];
+    if (stepDescEl)    stepDescEl.textContent  = stepDescs[n];
+    qs(".modal-card")?.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function validateStep(n) {
+    const step = qs(`.form-step[data-step="${n}"]`);
+    if (!step) return true;
+    const inputs = step.querySelectorAll("input[required], select[required], textarea[required]");
+    let valid = true;
+    inputs.forEach((inp) => {
+      if (!inp.value.trim()) {
+        inp.classList.add("field-invalid");
+        inp.addEventListener("input", () => inp.classList.remove("field-invalid"), { once: true });
+        valid = false;
+      }
+    });
+    return valid;
+  }
+
+  qsa(".step-next").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      if (validateStep(currentStep)) goToStep(currentStep + 1);
+    }),
+  );
+  qsa(".step-back").forEach((btn) =>
+    btn.addEventListener("click", () => goToStep(currentStep - 1),
+  ));
   qsa(".booking-trigger").forEach((el) =>
     el.addEventListener("click", (e) => {
       e.preventDefault();

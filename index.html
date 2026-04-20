@@ -1332,86 +1332,109 @@
         <button class="modal-close" data-close="" aria-label="Close">×</button>
         <div class="modal-top">
           <span class="mono kicker">Book a strategy call</span>
-          <h3>
-            Tell us a bit <span class="italic gold">about your business.</span>
+          <div class="step-indicator" aria-label="Form progress">
+            <div class="step-dot active" data-step="1"><span>1</span></div>
+            <div class="step-line"></div>
+            <div class="step-dot" data-step="2"><span>2</span></div>
+            <div class="step-line"></div>
+            <div class="step-dot" data-step="3"><span>3</span></div>
+          </div>
+          <h3 class="step-heading">
+            Tell us a bit <span class="italic gold">about you.</span>
           </h3>
-          <p>
-            Share your details and what you want automated. We'll use it to
-            prepare a more useful first call.
-          </p>
+          <p class="step-desc">Your name and contact so we know who we're talking to.</p>
         </div>
-        <form class="modal-form" id="bookingForm">
-          <div class="field">
-            <label>First Name</label>
-            <input name="first_name" type="text" placeholder="First Name" required="" />
+        <form class="modal-form" id="bookingForm" novalidate>
+
+          <!-- ── Step 1: You ── -->
+          <div class="form-step active" data-step="1">
+            <div class="field">
+              <label>First Name</label>
+              <input name="first_name" type="text" placeholder="First Name" required />
+            </div>
+            <div class="field">
+              <label>Last Name</label>
+              <input name="last_name" type="text" placeholder="Last Name" required />
+            </div>
+            <div class="field full">
+              <label>Work Email</label>
+              <input name="email" type="email" placeholder="you@company.com" required />
+            </div>
+            <div class="field full">
+              <label>Company</label>
+              <input name="company" type="text" placeholder="Your company" required />
+            </div>
+            <div class="step-nav">
+              <span class="mono dim">Step 1 of 3</span>
+              <button type="button" class="btn btn-primary step-next">Next <span>→</span></button>
+            </div>
           </div>
-          <div class="field">
-            <label>Last Name</label>
-            <input name="last_name" type="text" placeholder="Last Name" required="" />
-          </div>
-          <div class="field">
-            <label>Work Email</label>
-            <input name="email" type="email" placeholder="you@company.com" required="" />
-          </div>
-          <div class="field">
-            <label>Company</label>
-            <input name="company" type="text" placeholder="Your company" required="" />
-          </div>
-          <div class="field full">
-            <label>Company Website</label>
-            <input name="website" type="url" placeholder="https://yourcompany.com" />
-          </div>
-          <div class="field full" id="phoneField">
-            <label>Phone Number</label>
-            <div class="phone-wrap">
-              <div class="country-sel" id="countrySel">
-                <button type="button" class="country-trigger" id="countryTrigger" aria-haspopup="listbox" aria-expanded="false">
-                  <span class="country-flag" id="countryFlag">🇱🇰</span>
-                  <span class="country-code-lbl" id="countryCodeLbl">+94</span>
-                  <svg class="country-chev" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-                <div class="country-list" id="countryList" role="listbox">
-                  <input class="country-search" id="countrySearch" type="text" placeholder="Search country…" autocomplete="off" />
-                  <div class="country-items" id="countryItems"></div>
+
+          <!-- ── Step 2: Your Business ── -->
+          <div class="form-step" data-step="2">
+            <div class="field full">
+              <label>Company Website</label>
+              <input name="website" type="url" placeholder="https://yourcompany.com" />
+            </div>
+            <div class="field full" id="phoneField">
+              <label>Phone Number</label>
+              <div class="phone-wrap">
+                <div class="country-sel" id="countrySel">
+                  <button type="button" class="country-trigger" id="countryTrigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="country-flag" id="countryFlag">🇱🇰</span>
+                    <span class="country-code-lbl" id="countryCodeLbl">+94</span>
+                    <svg class="country-chev" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <div class="country-list" id="countryList" role="listbox">
+                    <input class="country-search" id="countrySearch" type="text" placeholder="Search country…" autocomplete="off" />
+                    <div class="country-items" id="countryItems"></div>
+                  </div>
                 </div>
+                <input class="phone-input" name="phone" id="phoneInput" type="tel" placeholder="Phone number" autocomplete="tel" />
               </div>
-              <input class="phone-input" name="phone" id="phoneInput" type="tel" placeholder="Phone number" autocomplete="tel" />
+              <span class="field-error" id="phoneError">Please enter a valid phone number</span>
             </div>
-            <span class="field-error" id="phoneError">Please enter a valid phone number</span>
-          </div>
-          <div class="field">
-            <label>Your Role</label>
-            <select name="role">
-              <option value="" disabled selected>Select your role</option>
-              <option>Founder / CEO</option>
-              <option>Operations Manager</option>
-              <option>Marketing Manager</option>
-              <option>Sales Manager</option>
-              <option>IT / Tech Lead</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Company Size</label>
-            <select name="company_size">
-              <option value="" disabled selected>Number of employees</option>
-              <option>1 – 10</option>
-              <option>11 – 50</option>
-              <option>51 – 200</option>
-              <option>201 – 500</option>
-              <option>500+</option>
-            </select>
-          </div>
-          <div class="field full">
-            <label>Budget Range</label>
-            <div class="budget-btns">
-              <button type="button" class="budget-btn" data-val="$15K - $50K">$15K – $50K</button>
-              <button type="button" class="budget-btn" data-val="$50K - $150K">$50K – $150K</button>
-              <button type="button" class="budget-btn" data-val="$150K - $500K">$150K – $500K</button>
-              <button type="button" class="budget-btn" data-val="Not Sure Yet">Not Sure Yet</button>
+            <div class="field">
+              <label>Your Role</label>
+              <select name="role">
+                <option value="" disabled selected>Select your role</option>
+                <option>Founder / CEO</option>
+                <option>Operations Manager</option>
+                <option>Marketing Manager</option>
+                <option>Sales Manager</option>
+                <option>IT / Tech Lead</option>
+                <option>Other</option>
+              </select>
             </div>
-            <input type="hidden" name="budget" id="budgetHidden" />
+            <div class="field">
+              <label>Company Size</label>
+              <select name="company_size">
+                <option value="" disabled selected>Number of employees</option>
+                <option>1 – 10</option>
+                <option>11 – 50</option>
+                <option>51 – 200</option>
+                <option>201 – 500</option>
+                <option>500+</option>
+              </select>
+            </div>
+            <div class="step-nav">
+              <button type="button" class="btn btn-ghost-sm step-back">← Back</button>
+              <button type="button" class="btn btn-primary step-next">Next <span>→</span></button>
+            </div>
           </div>
+
+          <!-- ── Step 3: Your Needs ── -->
+          <div class="form-step" data-step="3">
+            <div class="field full">
+              <label>Budget Range</label>
+              <div class="budget-btns">
+                <button type="button" class="budget-btn" data-val="$15K - $50K">$15K – $50K</button>
+                <button type="button" class="budget-btn" data-val="$50K - $150K">$50K – $150K</button>
+                <button type="button" class="budget-btn" data-val="$150K - $500K">$150K – $500K</button>
+                <button type="button" class="budget-btn" data-val="Not Sure Yet">Not Sure Yet</button>
+              </div>
+              <input type="hidden" name="budget" id="budgetHidden" />
+            </div>
           <div class="field full">
             <label for="interestTrigger">What are you interested in?</label>
             <div class="cust-sel" id="interestSel">
@@ -1630,17 +1653,17 @@
             <label>Tell Us About Your Project</label>
             <textarea
               name="notes"
-              rows="4"
-              placeholder="What challenges are you facing? What does success look like for your business?"
+              rows="3"
+              placeholder="What challenges are you facing? What does success look like?"
             ></textarea>
           </div>
-          <div class="modal-foot">
-            <span class="mono dim">No credit card · 20 minutes</span>
-            <button type="submit" class="btn btn-primary">
-              Request my call <span>→</span>
-            </button>
+          <div class="step-nav">
+            <button type="button" class="btn btn-ghost-sm step-back">← Back</button>
+            <button type="submit" class="btn btn-primary">Request my call <span>→</span></button>
           </div>
           <div class="modal-status" id="modalStatus" aria-live="polite"></div>
+          </div><!-- end step 3 -->
+
         </form>
         <div class="modal-success" id="modalSuccess">
           <div class="ms-icon">✓</div>
