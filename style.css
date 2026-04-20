@@ -3377,6 +3377,9 @@ html.modal-open {
 .modal-success.show {
   display: block;
 }
+.modal-card:has(.modal-success.show) .modal-top {
+  display: none;
+}
 .ms-icon {
   width: 64px;
   height: 64px;
