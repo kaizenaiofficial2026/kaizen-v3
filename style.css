@@ -91,6 +91,7 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 body {
   font-family: "DM Sans", system-ui, sans-serif;
@@ -3833,18 +3834,61 @@ body.modal-open {
   .hero-sub {
     font-size: 14px;
   }
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
   .hero-ctas .btn {
-    flex: 1 1 auto;
+    width: 100%;
     justify-content: center;
+  }
+  /* Hide redundant nav CTA on mobile — hamburger drawer holds it */
+  .nav-cta {
+    display: none;
   }
   .hero-trust {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .hero-trust .trust-marquee {
+    width: 100%;
+    min-width: 0;
+  }
+  .hero-left,
+  .hero-right,
+  .hero-ctas {
+    min-width: 0;
+    max-width: 100%;
   }
   .voice-card {
     padding: 18px;
     transform: none;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  /* Transcript rows must allow text to wrap inside flex */
+  .t-row {
+    min-width: 0;
+  }
+  .t-msg {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  /* Wave ring is bigger than card on small screens — clip it */
+  .wave {
+    overflow: hidden;
+  }
+  .wave-ring {
+    width: 120px;
+    height: 120px;
+  }
+  /* Voice card stat row — keep numbers from overflowing */
+  .vc-stat-n {
+    font-size: 20px;
   }
 
   /* Logos marquee — slower + tighter on small screens */
@@ -3925,6 +3969,12 @@ body.modal-open {
     padding-left: 18px;
     padding-right: 18px;
   }
+  /* Sticky aside overlaps the list when stacked — disable on mobile */
+  .faq-aside {
+    position: static;
+    top: auto;
+    text-align: center;
+  }
 
   /* CTA */
   .cta-btns {
@@ -3959,6 +4009,33 @@ body.modal-open {
   .chat-bubble {
     bottom: max(16px, env(safe-area-inset-bottom));
     right: 16px;
+  }
+
+  /* Footer — brand full-width on top, link columns share a row below */
+  .ft-top {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 28px 20px;
+  }
+  .ft-top > :first-child {
+    grid-column: 1 / -1;
+  }
+  .ft-desc {
+    max-width: 100%;
+  }
+  .ft-col h5 {
+    margin-bottom: 12px;
+    font-size: 9.5px;
+  }
+  .ft-col a {
+    font-size: 13px;
+    padding: 5px 0;
+  }
+}
+
+/* Very narrow phones — drop link cols to 2-up so words don't wrap */
+@media (max-width: 420px) {
+  .ft-top {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
