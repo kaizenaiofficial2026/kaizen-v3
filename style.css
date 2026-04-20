@@ -2810,13 +2810,44 @@ body.modal-open {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
-@media (max-width: 540px) {
-  .modal-form {
-    grid-template-columns: 1fr;
-    padding: 22px 24px 28px;
+@media (max-width: 640px) {
+  .modal {
+    padding: 0;
+    align-items: flex-end;
+  }
+  .modal-card {
+    width: 100%;
+    max-height: 92dvh;
+    border-radius: 20px 20px 0 0;
+    transform: translateY(100%);
+  }
+  .modal.open .modal-card {
+    transform: translateY(0);
   }
   .modal-top {
-    padding: 28px 24px 20px;
+    padding: 24px 20px 18px;
+  }
+  .modal-top h3 {
+    font-size: 26px;
+  }
+  .modal-top p {
+    font-size: 14px;
+  }
+  .modal-form {
+    grid-template-columns: 1fr;
+    padding: 18px 20px 32px;
+    gap: 14px;
+  }
+  .field.full {
+    grid-column: 1;
+  }
+  .modal-close {
+    top: 12px;
+    right: 12px;
+  }
+  .modal-foot {
+    flex-direction: column;
+    gap: 12px;
   }
 }
 .field {
