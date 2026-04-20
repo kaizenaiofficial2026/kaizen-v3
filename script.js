@@ -345,12 +345,14 @@
     legalModal.classList.add("open");
     legalModal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
+    document.documentElement.classList.add("modal-open");
   }
   function closeLegalModal() {
     if (!legalModal) return;
     legalModal.classList.remove("open");
     legalModal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
+    document.documentElement.classList.remove("modal-open");
   }
   legalModal?.addEventListener("click", (e) => {
     if (e.target.hasAttribute("data-close-legal")) {
@@ -384,11 +386,13 @@
     modal?.classList.add("open");
     modal?.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
+    document.documentElement.classList.add("modal-open");
   }
   function closeModal() {
     modal?.classList.remove("open");
     modal?.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
+    document.documentElement.classList.remove("modal-open");
     setTimeout(() => {
       modalForm?.reset();
       modalSuccess?.classList.remove("show");
@@ -431,18 +435,69 @@
     qs(".modal-card")?.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const URL_RE = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/\S*)?$/i;
+
+  function markInvalid(inp, errEl) {
+    inp.classList.add("field-invalid");
+    errEl?.classList.add("show");
+    const clear = () => {
+      inp.classList.remove("field-invalid");
+      errEl?.classList.remove("show");
+    };
+    inp.addEventListener("input", clear, { once: true });
+    inp.addEventListener("change", clear, { once: true });
+  }
+
   function validateStep(n) {
     const step = qs(`.form-step[data-step="${n}"]`);
     if (!step) return true;
-    const inputs = step.querySelectorAll("input[required], select[required], textarea[required]");
     let valid = true;
-    inputs.forEach((inp) => {
+
+    step.querySelectorAll("input[required], select[required], textarea[required]").forEach((inp) => {
       if (!inp.value.trim()) {
-        inp.classList.add("field-invalid");
-        inp.addEventListener("input", () => inp.classList.remove("field-invalid"), { once: true });
+        markInvalid(inp, null);
         valid = false;
       }
     });
+
+    if (n === 1) {
+      const email = step.querySelector('input[name="email"]');
+      if (email && email.value.trim() && !EMAIL_RE.test(email.value.trim())) {
+        markInvalid(email, qs("#emailError"));
+        valid = false;
+      }
+    }
+
+    if (n === 2) {
+      const website = step.querySelector('input[name="website"]');
+      if (website && website.value.trim() && !URL_RE.test(website.value.trim())) {
+        markInvalid(website, qs("#websiteError"));
+        valid = false;
+      }
+      const phone = step.querySelector('input[name="phone"]');
+      if (phone && phone.value.trim()) {
+        const digits = phone.value.replace(/\D/g, "");
+        if (digits.length < 6 || digits.length > 15) {
+          markInvalid(phone, qs("#phoneError"));
+          valid = false;
+        }
+      }
+    }
+
+    if (n === 3) {
+      const budget = qs("#budgetHidden");
+      if (budget && !budget.value) {
+        qs("#budgetError")?.classList.add("show");
+        valid = false;
+      }
+      const interest = step.querySelector('select[name="interest"]');
+      if (interest && !interest.value) {
+        qs("#interestSel")?.classList.add("field-invalid");
+        valid = false;
+      }
+    }
+
     return valid;
   }
 
@@ -501,6 +556,7 @@
           );
           if (match) nativeSel.value = match.value || match.text;
         }
+        interestSel.classList.remove("field-invalid");
         closeDropdown();
       }
       opt.addEventListener("click", () => selectOpt(opt));
@@ -524,6 +580,7 @@
       budgetBtns.forEach((b) => b.classList.remove("selected"));
       btn.classList.add("selected");
       if (budgetHidden) budgetHidden.value = btn.dataset.val;
+      qs("#budgetError")?.classList.remove("show");
     });
   });
 
@@ -655,6 +712,7 @@
 
   modalForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (!validateStep(3)) return;
     const btn = modalForm.querySelector('button[type="submit"]');
     btn.disabled = true;
     btn.textContent = "Sending…";

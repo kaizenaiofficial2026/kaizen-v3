@@ -1359,6 +1359,7 @@
             <div class="field full">
               <label>Work Email</label>
               <input name="email" type="email" placeholder="you@company.com" required />
+              <span class="field-error" id="emailError">Please enter a valid email address</span>
             </div>
             <div class="field full">
               <label>Company</label>
@@ -1373,11 +1374,12 @@
           <!-- ── Step 2: Your Business ── -->
           <div class="form-step" data-step="2">
             <div class="field full">
-              <label>Company Website</label>
+              <label>Company Website <span class="opt-tag">(optional)</span></label>
               <input name="website" type="url" placeholder="https://yourcompany.com" />
+              <span class="field-error" id="websiteError">Please enter a valid URL (e.g. https://yourcompany.com)</span>
             </div>
             <div class="field full" id="phoneField">
-              <label>Phone Number</label>
+              <label>Phone Number <span class="opt-tag">(optional)</span></label>
               <div class="phone-wrap">
                 <div class="country-sel" id="countrySel">
                   <button type="button" class="country-trigger" id="countryTrigger" aria-haspopup="listbox" aria-expanded="false">
@@ -1395,7 +1397,7 @@
               <span class="field-error" id="phoneError">Please enter a valid phone number</span>
             </div>
             <div class="field">
-              <label>Your Role</label>
+              <label>Your Role <span class="opt-tag">(optional)</span></label>
               <select name="role">
                 <option value="" disabled selected>Select your role</option>
                 <option>Founder / CEO</option>
@@ -1407,7 +1409,7 @@
               </select>
             </div>
             <div class="field">
-              <label>Company Size</label>
+              <label>Company Size <span class="opt-tag">(optional)</span></label>
               <select name="company_size">
                 <option value="" disabled selected>Number of employees</option>
                 <option>1 – 10</option>
@@ -1434,6 +1436,7 @@
                 <button type="button" class="budget-btn" data-val="Not Sure Yet">Not Sure Yet</button>
               </div>
               <input type="hidden" name="budget" id="budgetHidden" />
+              <span class="field-error" id="budgetError">Please select a budget range</span>
             </div>
           <div class="field full">
             <label for="interestTrigger">What are you interested in?</label>
@@ -1650,7 +1653,7 @@
             </div>
           </div>
           <div class="field full">
-            <label>Tell Us About Your Project</label>
+            <label>Tell Us About Your Project <span class="opt-tag">(optional)</span></label>
             <textarea
               name="notes"
               rows="3"
