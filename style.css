@@ -486,7 +486,7 @@ body.grain-on #grain {
 }
 .nav-ul a {
   padding: 8px 14px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--tx-2);
   position: relative;
@@ -523,7 +523,7 @@ body.grain-on #grain {
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--tx);
   background: transparent;
@@ -542,6 +542,30 @@ body.grain-on #grain {
 .nav-cta:hover .arrow {
   transform: translate(2px, -2px);
 }
+
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--bd-2);
+  background: transparent;
+  color: var(--tx-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  background: var(--tx);
+  color: var(--bg);
+  border-color: var(--tx);
+}
+[data-theme="dark"] .icon-moon { display: none; }
+[data-theme="dark"] .icon-sun  { display: block; }
+[data-theme="light"] .icon-sun  { display: none; }
+[data-theme="light"] .icon-moon { display: block; }
 
 .ham {
   display: none;

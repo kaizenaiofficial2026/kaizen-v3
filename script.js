@@ -804,4 +804,18 @@
   qsa("#chatQuick button").forEach((b) =>
     b.addEventListener("click", () => sendChat(b.dataset.q)),
   );
+
+  const themeToggle = qs("#themeToggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const next = root.dataset.theme === "dark" ? "light" : "dark";
+      tweaks.theme = next;
+      applyTheme(next);
+      try {
+        const saved = JSON.parse(localStorage.getItem(LS_KEY) || "{}");
+        saved.theme = next;
+        localStorage.setItem(LS_KEY, JSON.stringify(saved));
+      } catch (e) {}
+    });
+  }
 })();
