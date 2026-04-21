@@ -1683,34 +1683,35 @@
       <div class="modal-bg" data-close-demo></div>
       <div class="modal-card vd-card">
         <button class="modal-close" data-close-demo aria-label="Close">×</button>
-        <div class="modal-top">
-          <span class="mono kicker">AI Voice Agent · Live Demo</span>
-          <h3>Hear it for <span class="italic gold">yourself.</span></h3>
-          <p>Drop your number and our AI voice agent will call you within 60 seconds so you can try it live.</p>
-        </div>
-        <form class="modal-form vd-form" id="voiceDemoForm" novalidate>
-          <div class="field full">
-            <label>Your Name</label>
-            <input name="demo_name" type="text" placeholder="Full name" required />
+        <div class="vd-grid">
+          <div class="vd-left">
+            <div class="modal-top vd-top">
+              <span class="mono kicker">AI Voice Agent · Live Demo</span>
+              <h3>Hear it for <span class="italic gold">yourself.</span></h3>
+              <p>Tap the button below to call our AI voice agent right now. Ask anything — it'll answer like a real rep.</p>
+            </div>
+            <div class="vd-body">
+              <div class="vd-meta mono">
+                <span class="vd-dot"></span>
+                Live · Answering 24/7
+              </div>
+              <a href="tel:+94770000000" id="voiceDemoCallBtn" class="btn btn-primary vd-submit">
+                <span class="vd-phone-ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span>Call now</span>
+              </a>
+            </div>
           </div>
-          <div class="field full">
-            <label>Phone Number</label>
-            <input name="demo_phone" id="demoPhoneInput" type="tel" placeholder="+1 555 000 0000" autocomplete="tel" required />
-            <span class="field-error" id="demoPhoneError">Please enter a valid phone number (include country code)</span>
-          </div>
-          <div class="vd-meta mono">
-            <span class="vd-dot"></span>
-            Average call-back time: under 60 seconds
-          </div>
-          <button type="submit" class="btn btn-primary vd-submit">
-            <span>Call me now</span> <span>→</span>
-          </button>
-          <div class="modal-status" id="voiceDemoStatus" aria-live="polite"></div>
-        </form>
-        <div class="modal-success" id="voiceDemoSuccess">
-          <div class="ms-icon">✓</div>
-          <h3>Your AI agent is dialing.</h3>
-          <p>Pick up the next call from an unknown number — that's us. You can interrupt, ask anything, and hang up whenever.</p>
+          <aside class="vd-right" aria-label="Live transcript">
+            <div class="vd-right-head">
+              <span class="vd-live-dot" aria-hidden="true"></span>
+              <span class="mono">Live transcript</span>
+            </div>
+            <div class="vd-tsc" id="vdTranscript" aria-live="polite">
+              <!-- messages injected by voice-demo.js -->
+            </div>
+          </aside>
         </div>
       </div>
     </div>
@@ -1860,6 +1861,7 @@
     </div> -->
 
     <script src="script.js" defer></script>
+    <script src="voice-demo.js" defer></script>
     <script src="chat.js" defer></script>
   </body>
 </html>
