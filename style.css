@@ -244,8 +244,8 @@ i {
 }
 .sec-lead {
   margin-top: 20px;
-  font-size: clamp(16px, 1.3vw, 19px);
-  line-height: 1.55;
+  font-size: clamp(17px, 1.4vw, 21px);
+  line-height: 1.75;
   color: var(--tx-2);
   max-width: 620px;
   text-wrap: pretty;
@@ -873,7 +873,7 @@ body.grain-on #grain {
 .hero-sub {
   margin-top: 16px;
   font-size: clamp(17px, 1.4vw, 22px);
-  line-height: 1.55;
+  line-height: 1.75;
   color: var(--tx-2);
   max-width: 520px;
   text-wrap: pretty;
@@ -1548,8 +1548,8 @@ body.grain-on #grain {
 }
 .cmp-list li {
   padding: 14px 0 14px 28px;
-  font-size: 14.5px;
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 1.72;
   border-top: 1px solid var(--bd);
   position: relative;
   color: var(--tx-2);
@@ -2355,8 +2355,8 @@ body.grain-on #grain {
   animation: faqSlide 0.45s var(--ease);
 }
 .faq-a p {
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 16.5px;
+  line-height: 1.75;
   color: var(--tx-2);
 }
 @keyframes faqSlide {
@@ -4001,7 +4001,7 @@ html.modal-open {
     padding-bottom: 48px;
   }
   .hero-sub {
-    font-size: 17px;
+    font-size: 16px;
   }
   .hero-ctas {
     flex-direction: column;
@@ -4075,7 +4075,7 @@ html.modal-open {
   }
   .cmp-list li {
     padding: 12px 0 12px 24px;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   /* Solutions cards */
