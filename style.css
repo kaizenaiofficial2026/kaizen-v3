@@ -3556,6 +3556,19 @@ html.modal-open {
   margin-top: 6px;
   justify-content: center;
 }
+.vd-submit[data-state="connecting"] {
+  opacity: 0.8;
+  pointer-events: none;
+}
+.vd-submit[data-state="live"] {
+  background: #c0392b;
+  border-color: #c0392b;
+  color: #fff;
+}
+.vd-submit[data-state="live"]:hover {
+  background: #a93323;
+  border-color: #a93323;
+}
 .ms-icon {
   width: 64px;
   height: 64px;
@@ -3872,16 +3885,16 @@ html.modal-open {
   flex: 1;
 }
 .chat-name {
-  font-family: "Playfair Display", serif;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-family: "Syne", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
 }
 .chat-name em {
-  font-style: italic;
-  color: var(--g3);
-  font-weight: 400;
-  margin-left: 1px;
+  font-style: normal;
+  color: var(--g2);
+  font-weight: 800;
+  margin-left: 0;
 }
 .chat-status {
   display: inline-flex;

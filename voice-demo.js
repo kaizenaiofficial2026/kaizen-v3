@@ -6,6 +6,8 @@
 
   const qsa = (s, r = document) => [...r.querySelectorAll(s)];
   const tsc = document.getElementById("vdTranscript");
+  const callBtn = document.getElementById("voiceDemoCallBtn");
+  const callLbl = callBtn?.querySelector(".vd-btn-label");
 
   const WS_URL = "wss://kaizen-demo-backend.vercel.app/api/browser/stream";
   const AGENT_ID = "kaizenai";
@@ -19,11 +21,27 @@
   let isSessionOpen = false;
   let currentAssistantBubble = null;
 
+  // Sequentially scheduled audio chunks so replies play without overlap.
+  let playbackTime = 0;
+
+  function setBtnState(state) {
+    if (!callBtn) return;
+    callBtn.dataset.state = state;
+    if (!callLbl) return;
+    callLbl.textContent =
+      state === "connecting"
+        ? "Connecting…"
+        : state === "live"
+          ? "End call"
+          : "Call now";
+  }
+
   function appendBubble(who, label, text) {
     if (!tsc) return null;
     const row = document.createElement("div");
     row.className = `vd-bubble ${who} show`;
-    row.innerHTML = `<span class="vd-who">${label}</span><span class="vd-text"></span>`;
+    row.innerHTML = `<span class="vd-who"></span><span class="vd-text"></span>`;
+    row.querySelector(".vd-who").textContent = label;
     row.querySelector(".vd-text").textContent = text || "";
     tsc.appendChild(row);
     tsc.scrollTop = tsc.scrollHeight;
@@ -35,8 +53,7 @@
     if (!currentAssistantBubble) {
       currentAssistantBubble = appendBubble("ai", "Kaizen AI", "");
     }
-    const textEl = currentAssistantBubble.querySelector(".vd-text");
-    textEl.textContent = text;
+    currentAssistantBubble.querySelector(".vd-text").textContent = text;
     tsc.scrollTop = tsc.scrollHeight;
   }
 
@@ -51,51 +68,47 @@
   function pcm16ToBase64(float32Array) {
     const buffer = new ArrayBuffer(float32Array.length * 2);
     const view = new DataView(buffer);
-
     for (let i = 0; i < float32Array.length; i++) {
-      let s = Math.max(-1, Math.min(1, float32Array[i]));
+      const s = Math.max(-1, Math.min(1, float32Array[i]));
       view.setInt16(i * 2, s < 0 ? s * 0x8000 : s * 0x7fff, true);
     }
-
     let binary = "";
     const bytes = new Uint8Array(buffer);
     const chunkSize = 0x8000;
-
     for (let i = 0; i < bytes.length; i += chunkSize) {
-      const chunk = bytes.subarray(i, i + chunkSize);
-      binary += String.fromCharCode(...chunk);
+      binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
     }
-
     return btoa(binary);
   }
 
   function base64ToPCM16(base64) {
     const binary = atob(base64);
-    const len = binary.length;
-    const bytes = new Uint8Array(len);
-
-    for (let i = 0; i < len; i++) {
-      bytes[i] = binary.charCodeAt(i);
-    }
-
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
     return new Int16Array(bytes.buffer);
   }
 
   function playPCM16(base64Audio) {
     if (!audioContext) return;
-
     const pcm16 = base64ToPCM16(base64Audio);
+    if (!pcm16.length) return;
+
     const audioBuffer = audioContext.createBuffer(1, pcm16.length, 24000);
     const channel = audioBuffer.getChannelData(0);
+    for (let i = 0; i < pcm16.length; i++) channel[i] = pcm16[i] / 0x8000;
 
-    for (let i = 0; i < pcm16.length; i++) {
-      channel[i] = pcm16[i] / 0x8000;
-    }
+    const source = audioContext.createBufferSource();
+    source.buffer = audioBuffer;
+    source.connect(audioContext.destination);
 
-    const bufferSource = audioContext.createBufferSource();
-    bufferSource.buffer = audioBuffer;
-    bufferSource.connect(audioContext.destination);
-    bufferSource.start();
+    const now = audioContext.currentTime;
+    const startAt = Math.max(now, playbackTime);
+    source.start(startAt);
+    playbackTime = startAt + audioBuffer.duration;
+  }
+
+  function resetPlaybackQueue() {
+    playbackTime = audioContext ? audioContext.currentTime : 0;
   }
 
   async function startMic() {
@@ -104,8 +117,8 @@
       new (window.AudioContext || window.webkitAudioContext)({
         sampleRate: 24000,
       });
-
     await audioContext.resume();
+    playbackTime = audioContext.currentTime;
 
     mediaStream = await navigator.mediaDevices.getUserMedia({
       audio: {
@@ -121,14 +134,11 @@
 
     processorNode.onaudioprocess = (event) => {
       if (!ws || ws.readyState !== WebSocket.OPEN) return;
-
       const input = event.inputBuffer.getChannelData(0);
-      const audio = pcm16ToBase64(input);
-
       ws.send(
         JSON.stringify({
           type: "audio",
-          audio,
+          audio: pcm16ToBase64(input),
           agentId: AGENT_ID,
         }),
       );
@@ -144,14 +154,12 @@
       processorNode.onaudioprocess = null;
       processorNode = null;
     }
-
     if (sourceNode) {
       sourceNode.disconnect();
       sourceNode = null;
     }
-
     if (mediaStream) {
-      mediaStream.getTracks().forEach((track) => track.stop());
+      mediaStream.getTracks().forEach((t) => t.stop());
       mediaStream = null;
     }
   }
@@ -159,20 +167,20 @@
   function connectVoice() {
     if (isConnecting || isSessionOpen) return;
     isConnecting = true;
-
-    showSystemMessage("Connecting voice agent...");
+    setBtnState("connecting");
+    showSystemMessage("Connecting voice agent…");
 
     ws = new WebSocket(`${WS_URL}?agentId=${encodeURIComponent(AGENT_ID)}`);
 
     ws.addEventListener("open", async () => {
       isConnecting = false;
       isSessionOpen = true;
-      showSystemMessage("Voice agent connected.");
-
+      setBtnState("live");
+      showSystemMessage("Voice agent connected. Start speaking.");
       try {
         await startMic();
       } catch (err) {
-        showSystemMessage("Microphone access failed.");
+        showSystemMessage("Microphone access denied. Please allow mic and retry.");
         closeSession();
       }
     });
@@ -187,9 +195,7 @@
 
       switch (msg.type) {
         case "conversation.item.input_audio_transcription.completed":
-          if (msg.transcript) {
-            appendBubble("user", "Caller", msg.transcript);
-          }
+          if (msg.transcript) appendBubble("user", "Caller", msg.transcript);
           break;
 
         case "response.audio_transcript.delta": {
@@ -206,13 +212,13 @@
           break;
 
         case "response.audio.delta":
-          if (msg.delta) {
-            playPCM16(msg.delta);
-          }
+          if (msg.delta) playPCM16(msg.delta);
           break;
 
         case "input_audio_buffer.speech_started":
+          // User started talking — cut assistant playback so barge-in feels natural.
           clearAssistantBubble();
+          resetPlaybackQueue();
           break;
 
         case "session.ended":
@@ -227,10 +233,13 @@
     });
 
     ws.addEventListener("close", () => {
+      const wasOpen = isSessionOpen;
       isConnecting = false;
       isSessionOpen = false;
       stopMic();
       ws = null;
+      setBtnState("idle");
+      if (wasOpen) showSystemMessage("Call ended.");
     });
 
     ws.addEventListener("error", () => {
@@ -242,17 +251,18 @@
   function closeSession(sendEnd = true) {
     stopMic();
     clearAssistantBubble();
-
     if (ws) {
       if (sendEnd && ws.readyState === WebSocket.OPEN) {
-        ws.send(JSON.stringify({ type: "end" }));
+        try {
+          ws.send(JSON.stringify({ type: "end" }));
+        } catch {}
       }
       ws.close();
       ws = null;
     }
-
     isConnecting = false;
     isSessionOpen = false;
+    setBtnState("idle");
   }
 
   function openModal() {
@@ -261,7 +271,7 @@
     document.body.classList.add("modal-open");
     document.documentElement.classList.add("modal-open");
     if (tsc) tsc.innerHTML = "";
-    connectVoice();
+    setBtnState("idle");
   }
 
   function closeModal() {
@@ -272,6 +282,14 @@
     closeSession();
     if (tsc) tsc.innerHTML = "";
   }
+
+  callBtn?.addEventListener("click", () => {
+    if (isSessionOpen || isConnecting) {
+      closeSession();
+    } else {
+      connectVoice();
+    }
+  });
 
   qsa(".demo-trigger").forEach((el) =>
     el.addEventListener("click", (e) => {
@@ -285,8 +303,6 @@
   );
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("open")) {
-      closeModal();
-    }
+    if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
   });
 })();
