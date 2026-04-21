@@ -1345,18 +1345,20 @@ body.grain-on #grain {
 }
 .logos-head {
   display: flex;
+  flex-direction: column;   /* changed */
   align-items: center;
-  justify-content: center;  /* 👈 ADD */
-  text-align: center;       /* 👈 ADD */
-  gap: 20px;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;                /* reduced from 20px */
   padding-bottom: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;        /* changed */
 }
 .logos-head .sec-n {
   font-size: 10.5px;
 }
 .sec-rule {
-  flex: 1;
+  width: 100%;
+  flex: none;               /* add this */
   height: 1px;
   background: var(--bd-2);
   min-width: 40px;
@@ -1366,10 +1368,9 @@ body.grain-on #grain {
   color: var(--tx-2);
   letter-spacing: 0.02em;
   text-align: center;
-  width: 100%;
-
-  margin-top: -18px;   /* 👈 ADD THIS (moves it above the line) */
-  position: relative;  /* 👇 for layering */
+  width: auto;              /* changed from 100% */
+  margin-top: 0;            /* remove the negative margin */
+  position: relative;
   z-index: 2;
 }
 .logos-marquee {
