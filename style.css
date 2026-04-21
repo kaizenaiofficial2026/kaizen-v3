@@ -1346,6 +1346,8 @@ body.grain-on #grain {
 .logos-head {
   display: flex;
   align-items: center;
+  justify-content: center;  /* 👈 ADD */
+  text-align: center;       /* 👈 ADD */
   gap: 20px;
   padding-bottom: 20px;
   flex-wrap: wrap;
