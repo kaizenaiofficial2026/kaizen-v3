@@ -883,6 +883,7 @@ body.grain-on #grain {
   display: flex;
   gap: 12px;
   margin-top: 20px;
+  margin-bottom: 40px; /* 👈 ADD THIS */
   flex-wrap: wrap;
 }
 
