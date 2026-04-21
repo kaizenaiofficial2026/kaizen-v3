@@ -244,8 +244,8 @@ i {
 }
 .sec-lead {
   margin-top: 20px;
-  font-size: clamp(17px, 1.4vw, 21px);
-  line-height: 1.75;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.55;
   color: var(--tx-2);
   max-width: 620px;
   text-wrap: pretty;
@@ -260,7 +260,7 @@ i {
   align-items: center;
   gap: 10px;
   padding: 16px 28px;
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: 500;
   letter-spacing: 0.04em;
   border-radius: 100px;
@@ -873,7 +873,7 @@ body.grain-on #grain {
 .hero-sub {
   margin-top: 16px;
   font-size: clamp(17px, 1.4vw, 22px);
-  line-height: 1.75;
+  line-height: 1.55;
   color: var(--tx-2);
   max-width: 520px;
   text-wrap: pretty;
@@ -1548,7 +1548,7 @@ body.grain-on #grain {
 }
 .cmp-list li {
   padding: 14px 0 14px 28px;
-  font-size: 16px;
+  font-size: 16.5px;
   line-height: 1.75;
   border-top: 1px solid var(--bd);
   position: relative;
@@ -1781,7 +1781,7 @@ body.grain-on #grain {
   color: var(--g3);
 }
 .sol-d {
-  font-size: 16px;
+  font-size: 16.5px;
   line-height: 1.75;
   color: var(--tx-2);
   margin-bottom: auto;
@@ -1911,7 +1911,7 @@ body.grain-on #grain {
   font-weight: 400;
 }
 .ben p {
-  font-size: 16px;
+  font-size: 16.5px;
   line-height: 1.75;
   color: var(--tx-2);
   margin-bottom: 24px;
@@ -2061,7 +2061,7 @@ body.grain-on #grain {
   margin-bottom: 14px;
 }
 .pr-step p {
-  font-size: 16px;
+  font-size: 16.5px;
   line-height: 1.75;
   color: var(--tx-inv-2);
   margin-bottom: 22px;
@@ -2073,8 +2073,8 @@ body.grain-on #grain {
   gap: 8px;
 }
 .pr-list li {
-  font-size: 13.5px;
-  line-height: 1.5;
+  font-size: 15.5px;
+  line-height: 1.7;
   color: var(--tx-inv-2);
   padding-left: 18px;
   position: relative;
@@ -2481,21 +2481,21 @@ footer {
   }
 }
 .ft-tag {
-  font-size: 13.5px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--tx-inv-3);
   margin-top: 8px;
   text-transform: uppercase;
 }
 .ft-desc {
-  font-size: 15px;
+  font-size: 15.5px;
   line-height: 1.72;
   color: var(--tx-inv-2);
   margin-top: 16px;
   max-width: 320px;
 }
 .ft-col h5 {
-  font-size: 11.5px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4001,7 +4001,7 @@ html.modal-open {
     padding-bottom: 48px;
   }
   .hero-sub {
-    font-size: 16px;
+    font-size: 17px;
   }
   .hero-ctas {
     flex-direction: column;
@@ -4075,7 +4075,7 @@ html.modal-open {
   }
   .cmp-list li {
     padding: 12px 0 12px 24px;
-    font-size: 15px;
+    font-size: 15.5px;
   }
 
   /* Solutions cards */
