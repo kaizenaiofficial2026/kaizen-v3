@@ -260,8 +260,8 @@ i {
   align-items: center;
   gap: 10px;
   padding: 16px 28px;
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 500;
   letter-spacing: 0.04em;
   border-radius: 100px;
   border: 1px solid transparent;
@@ -458,7 +458,7 @@ body.grain-on #grain {
 }
 .logo-text {
   font-family: "Syne", sans-serif;
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 800;
   letter-spacing: -0.3px;
 }
@@ -883,6 +883,7 @@ body.grain-on #grain {
   display: flex;
   gap: 12px;
   margin-top: 20px;
+  margin-bottom: 32px;
   flex-wrap: wrap;
 }
 
@@ -1345,6 +1346,7 @@ body.grain-on #grain {
 .logos-head {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
   padding-bottom: 20px;
   flex-wrap: wrap;
@@ -1548,8 +1550,8 @@ body.grain-on #grain {
 }
 .cmp-list li {
   padding: 14px 0 14px 28px;
-  font-size: 17px;
-  line-height: 1.78;
+  font-size: 14.5px;
+  line-height: 1.55;
   border-top: 1px solid var(--bd);
   position: relative;
   color: var(--tx-2);
@@ -1781,8 +1783,8 @@ body.grain-on #grain {
   color: var(--g3);
 }
 .sol-d {
-  font-size: 17px;
-  line-height: 1.78;
+  font-size: 14.5px;
+  line-height: 1.6;
   color: var(--tx-2);
   margin-bottom: auto;
   padding-bottom: 20px;
@@ -1795,8 +1797,8 @@ body.grain-on #grain {
 }
 .chip {
   display: inline-block;
-  padding: 5px 11px;
-  font-size: 10.5px;
+  padding: 7px 15px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.02em;
   border: 1px solid var(--bd);
@@ -1911,8 +1913,8 @@ body.grain-on #grain {
   font-weight: 400;
 }
 .ben p {
-  font-size: 17px;
-  line-height: 1.78;
+  font-size: 14.5px;
+  line-height: 1.6;
   color: var(--tx-2);
   margin-bottom: 24px;
 }
@@ -1925,12 +1927,12 @@ body.grain-on #grain {
   color: var(--tx-3);
 }
 .ben-foot svg {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   color: var(--g2);
 }
 .ben-foot .mono {
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 0.06em;
 }
 
@@ -2061,8 +2063,8 @@ body.grain-on #grain {
   margin-bottom: 14px;
 }
 .pr-step p {
-  font-size: 17px;
-  line-height: 1.78;
+  font-size: 14.5px;
+  line-height: 1.6;
   color: var(--tx-inv-2);
   margin-bottom: 22px;
 }
@@ -2073,8 +2075,8 @@ body.grain-on #grain {
   gap: 8px;
 }
 .pr-list li {
-  font-size: 16px;
-  line-height: 1.72;
+  font-size: 13.5px;
+  line-height: 1.5;
   color: var(--tx-inv-2);
   padding-left: 18px;
   position: relative;
@@ -2355,8 +2357,8 @@ body.grain-on #grain {
   animation: faqSlide 0.45s var(--ease);
 }
 .faq-a p {
-  font-size: 17px;
-  line-height: 1.78;
+  font-size: 15px;
+  line-height: 1.65;
   color: var(--tx-2);
 }
 @keyframes faqSlide {
@@ -2467,6 +2469,13 @@ footer {
   position: relative;
   overflow: hidden;
 }
+html, body {
+  overflow-x: hidden;
+}
+[data-theme="light"] html,
+[data-theme="light"] body {
+  background: var(--bg-ink);
+}
 .ft-top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -2481,15 +2490,15 @@ footer {
   }
 }
 .ft-tag {
-  font-size: 14.5px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   color: var(--tx-inv-3);
   margin-top: 8px;
   text-transform: uppercase;
 }
 .ft-desc {
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 13.5px;
+  line-height: 1.6;
   color: var(--tx-inv-2);
   margin-top: 16px;
   max-width: 320px;
@@ -2505,7 +2514,7 @@ footer {
 .ft-col a {
   display: block;
   padding: 6px 0;
-  font-size: 15.5px;
+  font-size: 13.5px;
   color: var(--tx-inv-2);
   transition: color 0.25s;
 }
@@ -2520,10 +2529,10 @@ footer {
   flex-wrap: wrap;
 }
 .fsoc a {
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
   border: 1px solid var(--bd-inv);
-  border-radius: 9px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2536,8 +2545,8 @@ footer {
   background: rgba(196, 154, 48, 0.08);
 }
 .fsoc a svg {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
   display: block;
   fill: currentColor;
   transition: transform 0.25s;
@@ -2604,7 +2613,7 @@ footer {
   border-top: 1px solid var(--bd-inv);
   flex-wrap: wrap;
   gap: 16px;
-  font-size: 13.5px;
+  font-size: 11px;
   color: var(--tx-inv-3);
   letter-spacing: 0.08em;
 }
@@ -4075,7 +4084,7 @@ html.modal-open {
   }
   .cmp-list li {
     padding: 12px 0 12px 24px;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   /* Solutions cards */
