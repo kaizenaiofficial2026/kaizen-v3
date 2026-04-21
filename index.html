@@ -816,7 +816,7 @@
             <span class="btn-label">Book a free call</span>
             <span class="btn-arrow">→</span>
           </a>
-          <a href="#book-call" class="btn btn-ghost-dark booking-trigger"
+          <a href="#voice-demo" class="btn btn-ghost-dark demo-trigger"
             >See a live demo</a
           >
         </div>
@@ -1674,6 +1674,43 @@
             Thanks for reaching out. We'll contact you within 1 business day to
             schedule your free strategy call.
           </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ VOICE DEMO MODAL ═══════════════════════════════ -->
+    <div class="modal" id="voiceDemoModal" aria-hidden="true">
+      <div class="modal-bg" data-close-demo></div>
+      <div class="modal-card vd-card">
+        <button class="modal-close" data-close-demo aria-label="Close">×</button>
+        <div class="modal-top">
+          <span class="mono kicker">AI Voice Agent · Live Demo</span>
+          <h3>Hear it for <span class="italic gold">yourself.</span></h3>
+          <p>Drop your number and our AI voice agent will call you within 60 seconds so you can try it live.</p>
+        </div>
+        <form class="modal-form vd-form" id="voiceDemoForm" novalidate>
+          <div class="field full">
+            <label>Your Name</label>
+            <input name="demo_name" type="text" placeholder="Full name" required />
+          </div>
+          <div class="field full">
+            <label>Phone Number</label>
+            <input name="demo_phone" id="demoPhoneInput" type="tel" placeholder="+1 555 000 0000" autocomplete="tel" required />
+            <span class="field-error" id="demoPhoneError">Please enter a valid phone number (include country code)</span>
+          </div>
+          <div class="vd-meta mono">
+            <span class="vd-dot"></span>
+            Average call-back time: under 60 seconds
+          </div>
+          <button type="submit" class="btn btn-primary vd-submit">
+            <span>Call me now</span> <span>→</span>
+          </button>
+          <div class="modal-status" id="voiceDemoStatus" aria-live="polite"></div>
+        </form>
+        <div class="modal-success" id="voiceDemoSuccess">
+          <div class="ms-icon">✓</div>
+          <h3>Your AI agent is dialing.</h3>
+          <p>Pick up the next call from an unknown number — that's us. You can interrupt, ask anything, and hang up whenever.</p>
         </div>
       </div>
     </div>

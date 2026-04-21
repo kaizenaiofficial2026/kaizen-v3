@@ -516,9 +516,106 @@
     }),
   );
   qsa("[data-close]").forEach((el) => el.addEventListener("click", closeModal));
+
+  // ── Voice Demo Modal ──
+  const voiceDemoModal = qs("#voiceDemoModal");
+  const voiceDemoForm = qs("#voiceDemoForm");
+  const voiceDemoSuccess = qs("#voiceDemoSuccess");
+  const voiceDemoStatus = qs("#voiceDemoStatus");
+  const demoPhoneInput = qs("#demoPhoneInput");
+  const demoPhoneError = qs("#demoPhoneError");
+  function openVoiceDemo() {
+    voiceDemoModal?.classList.add("open");
+    voiceDemoModal?.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    document.documentElement.classList.add("modal-open");
+  }
+  function closeVoiceDemo() {
+    voiceDemoModal?.classList.remove("open");
+    voiceDemoModal?.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    document.documentElement.classList.remove("modal-open");
+    setTimeout(() => {
+      voiceDemoForm?.reset();
+      voiceDemoSuccess?.classList.remove("show");
+      if (voiceDemoForm) voiceDemoForm.style.display = "";
+      if (voiceDemoStatus) voiceDemoStatus.textContent = "";
+      demoPhoneError?.classList.remove("show");
+      demoPhoneInput?.classList.remove("field-invalid");
+    }, 400);
+  }
+  qsa(".demo-trigger").forEach((el) =>
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      openVoiceDemo();
+    }),
+  );
+  qsa("[data-close-demo]").forEach((el) =>
+    el.addEventListener("click", closeVoiceDemo),
+  );
+  demoPhoneInput?.addEventListener("input", () => {
+    demoPhoneError?.classList.remove("show");
+    demoPhoneInput.classList.remove("field-invalid");
+  });
+  voiceDemoForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const nameInp = voiceDemoForm.querySelector('input[name="demo_name"]');
+    let valid = true;
+    if (!nameInp.value.trim()) {
+      nameInp.classList.add("field-invalid");
+      nameInp.addEventListener(
+        "input",
+        () => nameInp.classList.remove("field-invalid"),
+        { once: true },
+      );
+      valid = false;
+    }
+    const raw = (demoPhoneInput?.value || "").trim();
+    const digits = raw.replace(/\D/g, "");
+    if (digits.length < 7 || digits.length > 15) {
+      demoPhoneInput?.classList.add("field-invalid");
+      demoPhoneError?.classList.add("show");
+      valid = false;
+    }
+    if (!valid) return;
+
+    const btn = voiceDemoForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    const origHtml = btn.innerHTML;
+    btn.innerHTML = "<span>Dialing…</span>";
+    if (voiceDemoStatus) {
+      voiceDemoStatus.textContent = "Placing your demo call…";
+      voiceDemoStatus.style.color = "";
+    }
+    try {
+      if (!window.emailjs) throw new Error("Service unavailable.");
+      await window.emailjs.send(
+        "service_l45vbyb",
+        "template_1vi7v91",
+        {
+          first_name: nameInp.value.trim(),
+          phone: raw,
+          source: "Voice Agent Live Demo Request",
+        },
+        { publicKey: "l0OAiRQ3h3Zpw1AMn" },
+      );
+      voiceDemoForm.style.display = "none";
+      voiceDemoSuccess?.classList.add("show");
+    } catch (err) {
+      btn.disabled = false;
+      btn.innerHTML = origHtml;
+      if (voiceDemoStatus) {
+        voiceDemoStatus.textContent =
+          "Something went wrong. Please try again or email us directly.";
+        voiceDemoStatus.style.color = "#e07878";
+      }
+    }
+  });
+
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       if (modal?.classList.contains("open")) closeModal();
+      if (voiceDemoModal?.classList.contains("open")) closeVoiceDemo();
       if (legalModal?.classList.contains("open")) closeLegalModal();
       if (tweaksPanel?.classList.contains("open")) toggleTweaks(false);
     }
