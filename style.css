@@ -1368,13 +1368,9 @@ body.grain-on #grain {
   text-align: center;
   width: 100%;
 
-  margin-top: -18px;
-  position: relative;
+  margin-top: -18px;   /* 👈 ADD THIS (moves it above the line) */
+  position: relative;  /* 👇 for layering */
   z-index: 2;
-
-  background: var(--bg-2); /* 👈 blends with section */
-  display: inline-block;
-  padding: 0 12px;
 }
 .logos-marquee {
   overflow: hidden;
