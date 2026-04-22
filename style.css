@@ -671,8 +671,8 @@ body.grain-on #grain {
 ══════════════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  height: 100dvh;
-  padding: calc(var(--nav-h) + 12px) 0 80px;
+  min-height: 100dvh;
+  padding: calc(var(--nav-h) + 12px) 0 120px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -814,7 +814,7 @@ body.grain-on #grain {
   font-family: "Playfair Display", serif;
   font-size: clamp(60px, 8vw, 120px);
   font-weight: 900;
-  line-height: 1.02;
+  line-height: 0.95;
   letter-spacing: -0.045em;
   color: var(--tx);
   margin-bottom: 0;
@@ -822,7 +822,7 @@ body.grain-on #grain {
 .hero-h .line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.12em;
+  padding-bottom: 0.05em;
 }
 .hero-h .line:nth-child(3) .reveal,
 .hero-h .line:nth-child(5) .reveal {
