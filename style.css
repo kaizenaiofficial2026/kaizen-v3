@@ -184,6 +184,11 @@ i {
   padding: 140px 0;
   position: relative;
 }
+
+/* Fix FAQ extra space */
+.sec-faq.section {
+  padding-bottom: 60px;
+}
 @media (max-width: 760px) {
   .section {
     padding: 88px 0;
