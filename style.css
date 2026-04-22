@@ -93,9 +93,11 @@ html {
   scroll-behavior: smooth;
   overflow-x: clip;
   background: var(--bg);
+  overscroll-behavior-y: none;
 }
+
 body {
-   font-family: "DM Sans", system-ui, sans-serif;
+  font-family: "DM Sans", system-ui, sans-serif;
   font-size: 17.5px;
   line-height: 1.65;
   background: var(--bg);
