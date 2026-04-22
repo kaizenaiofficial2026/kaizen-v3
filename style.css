@@ -185,9 +185,14 @@ i {
   position: relative;
 }
 
-/* Fix FAQ extra space */
+/* ===== FIX FAQ WHITE SPACE ===== */
 .sec-faq.section {
   padding-bottom: 60px;
+  padding-top: 100px;
+}
+
+.sec-faq .faq-cols {
+  gap: 40px;
 }
 @media (max-width: 760px) {
   .section {
