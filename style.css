@@ -812,7 +812,7 @@ body.grain-on #grain {
 
 .hero-h {
   font-family: "Playfair Display", serif;
-  font-size: clamp(40px, 5.8vw, 88px);
+  font-size: clamp(60px, 8vw, 120px);
   font-weight: 900;
   line-height: 1.02;
   letter-spacing: -0.045em;
