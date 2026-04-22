@@ -92,9 +92,10 @@
 html {
   scroll-behavior: smooth;
   overflow-x: clip;
+  background: var(--bg);
 }
 body {
-  font-family: "DM Sans", system-ui, sans-serif;
+   font-family: "DM Sans", system-ui, sans-serif;
   font-size: 17.5px;
   line-height: 1.65;
   background: var(--bg);
@@ -102,6 +103,7 @@ body {
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   transition: var(--t-theme);
+  margin: 0;
 }
 
 /* Desktop: scale entire page proportionally to 1728px reference width
