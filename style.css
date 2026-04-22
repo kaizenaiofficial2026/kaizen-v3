@@ -814,7 +814,7 @@ body.grain-on #grain {
   font-family: "Playfair Display", serif;
   font-size: clamp(40px, 5.8vw, 88px);
   font-weight: 900;
-  line-height: 0.9;
+  line-height: 1.02;
   letter-spacing: -0.045em;
   color: var(--tx);
   margin-bottom: 0;
@@ -822,7 +822,7 @@ body.grain-on #grain {
 .hero-h .line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.04em;
+  padding-bottom: 0.12em;
 }
 .hero-h .line:nth-child(3) .reveal,
 .hero-h .line:nth-child(5) .reveal {
@@ -866,7 +866,7 @@ body.grain-on #grain {
   color: var(--g2);
 }
 .hero-h .line.alt {
-  margin-top: 0.08em;
+  margin-top: 0.18em;
   color: var(--tx-2);
 }
 
