@@ -9,7 +9,7 @@
   const callBtn = document.getElementById("voiceDemoCallBtn");
   const callLbl = callBtn?.querySelector(".vd-btn-label");
 
-  const WS_URL = "wss://kaizen-demo-backend.vercel.app/api/browser/stream";
+  const WS_URL = "wss://demobackend-ljfsvw.fly.dev/api/browser/stream";
   const AGENT_ID = "kaizenai";
 
   let ws = null;
