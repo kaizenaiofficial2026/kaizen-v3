@@ -1,0 +1,48 @@
+export interface Country {
+  f: string;
+  n: string;
+  d: string;
+}
+
+export const COUNTRIES: Country[] = [
+  { f: "🇱🇰", n: "Sri Lanka", d: "+94" },
+  { f: "🇺🇸", n: "United States", d: "+1" },
+  { f: "🇬🇧", n: "United Kingdom", d: "+44" },
+  { f: "🇦🇺", n: "Australia", d: "+61" },
+  { f: "🇨🇦", n: "Canada", d: "+1" },
+  { f: "🇮🇳", n: "India", d: "+91" },
+  { f: "🇸🇬", n: "Singapore", d: "+65" },
+  { f: "🇦🇪", n: "UAE", d: "+971" },
+  { f: "🇩🇪", n: "Germany", d: "+49" },
+  { f: "🇫🇷", n: "France", d: "+33" },
+  { f: "🇳🇱", n: "Netherlands", d: "+31" },
+  { f: "🇯🇵", n: "Japan", d: "+81" },
+  { f: "🇲🇾", n: "Malaysia", d: "+60" },
+  { f: "🇮🇩", n: "Indonesia", d: "+62" },
+  { f: "🇵🇭", n: "Philippines", d: "+63" },
+  { f: "🇿🇦", n: "South Africa", d: "+27" },
+  { f: "🇳🇬", n: "Nigeria", d: "+234" },
+  { f: "🇧🇷", n: "Brazil", d: "+55" },
+  { f: "🇲🇽", n: "Mexico", d: "+52" },
+  { f: "🇳🇿", n: "New Zealand", d: "+64" },
+  { f: "🇰🇷", n: "South Korea", d: "+82" },
+  { f: "🇨🇳", n: "China", d: "+86" },
+  { f: "🇵🇰", n: "Pakistan", d: "+92" },
+  { f: "🇧🇩", n: "Bangladesh", d: "+880" },
+  { f: "🇮🇹", n: "Italy", d: "+39" },
+  { f: "🇪🇸", n: "Spain", d: "+34" },
+  { f: "🇵🇹", n: "Portugal", d: "+351" },
+  { f: "🇸🇪", n: "Sweden", d: "+46" },
+  { f: "🇨🇭", n: "Switzerland", d: "+41" },
+  { f: "🇹🇭", n: "Thailand", d: "+66" },
+  { f: "🇻🇳", n: "Vietnam", d: "+84" },
+  { f: "🇶🇦", n: "Qatar", d: "+974" },
+  { f: "🇸🇦", n: "Saudi Arabia", d: "+966" },
+  { f: "🇰🇪", n: "Kenya", d: "+254" },
+  { f: "🇬🇭", n: "Ghana", d: "+233" },
+  { f: "🇦🇷", n: "Argentina", d: "+54" },
+  { f: "🇨🇴", n: "Colombia", d: "+57" },
+  { f: "🇵🇪", n: "Peru", d: "+51" },
+  { f: "🇮🇱", n: "Israel", d: "+972" },
+  { f: "🇹🇷", n: "Turkey", d: "+90" },
+];

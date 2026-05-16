@@ -1,0 +1,1780 @@
+<!doctype html>
+<html lang="en" data-theme="light" style="--anim-level: 0.8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kaizen AI — AI Chatbots &amp; Voice Agents</title>
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="apple-touch-icon" href="logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&amp;family=DM+Sans:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@300;400;500&amp;family=Syne:wght@700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    class="halo-on grain-on"
+    data-hero-variant="wave"
+    data-cc-id="cc-1"
+    style="font-family: &quot;Playfair Display&quot;"
+  >
+    <template id="__bundler_thumbnail" data-bg-color="#0b0906">
+      <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+        <rect width="1200" height="800" fill="#0b0906" />
+        <circle
+          cx="600"
+          cy="400"
+          r="200"
+          fill="none"
+          stroke="#c4a038"
+          stroke-width="3"
+          opacity="0.6"
+        />
+        <path
+          d="M520 320 L520 480 M520 400 L680 320 M520 400 L680 480"
+          stroke="#f1ead5"
+          stroke-width="14"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"
+        />
+        <text
+          x="600"
+          y="640"
+          text-anchor="middle"
+          font-family="Georgia, serif"
+          font-size="54"
+          font-weight="900"
+          fill="#f1ead5"
+        >
+          Kaizen
+          <tspan font-style="italic" font-weight="400" fill="#c4a038">AI</tspan>
+        </text>
+      </svg>
+    </template>
+
+    <!-- Tweakable defaults -->
+    <script>
+      window.KAIZEN_TWEAKS = /*EDITMODE-BEGIN*/ {
+        accentHue: 80,
+        animationLevel: 10,
+        grain: true,
+        heroVariant: "transcript",
+        cursorHalo: true,
+        theme: "dark",
+      } /*EDITMODE-END*/;
+    </script>
+
+    <!-- Cursor halo (custom cursor follower) -->
+    <div id="halo" aria-hidden="true"></div>
+    <div id="halo-dot" aria-hidden="true"></div>
+
+    <!-- Grain overlay -->
+    <div id="grain" aria-hidden="true"></div>
+
+    <!-- Scroll progress -->
+    <div id="prog" aria-hidden="true" style="width: 0.578089%"></div>
+
+    <!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
+    <header id="nav" class="scrolled">
+      <div class="nav-in">
+        <a class="logo" href="#top">
+          <span class="logo-text">Kaizen<em>AI</em></span>
+        </a>
+
+        <nav class="nav-ul">
+          <a href="#work" data-s="work" class="active">Work</a>
+          <a href="#solutions" data-s="solutions" class="">Solutions</a>
+          <a href="#process" data-s="process" class="">Process</a>
+          <a href="#faq" data-s="faq" class="">FAQ</a>
+        </nav>
+
+        <div class="nav-right">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <a href="#book" class="nav-cta booking-trigger">
+            <span>Book a call</span>
+          </a>
+          <button class="ham" id="ham" aria-label="Menu">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Drawer -->
+    <div id="drawer" aria-hidden="true">
+      <div class="drawer-inner">
+        <a href="#work">Work</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
+        <a href="#book" class="booking-trigger drawer-cta">Book a call</a>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+    <section id="top" class="hero">
+
+
+      <div class="hero-grid hero-grid--centered">
+        <!-- CENTERED: Kinetic headline -->
+        <div class="hero-left hero-left--centered">
+          <h1 class="hero-h in">
+  <span class="line">
+    <span class="reveal">Never miss a</span>
+  </span>
+  <span class="line">
+    <span class="reveal italic gold">lead.</span>
+  </span>
+  <span class="line alt">
+    <span class="reveal">Never lose a</span>
+  </span>
+  <span class="line">
+    <span class="reveal italic gold">customer.</span>
+  </span>
+</h1>
+          <p class="hero-sub hero-sub--centered">
+            AI agents that answer every call, reply to every message, and book
+            appointments — in any language, 24/7/365. Not a clumsy auto-reply.
+            <em>Real conversations,</em> trained on your business.
+          </p>
+
+          <div class="hero-ctas hero-ctas--centered">
+            <a href="#book" class="btn btn-primary booking-trigger">
+              <span class="btn-label">Book a strategy call</span>
+              <span class="btn-arrow">→</span>
+            </a>
+            <a href="#voice-demo" class="btn btn-ghost demo-trigger">
+              <span class="play-tri"></span>
+              <span>Live demo</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Running stat ticker -->
+      <div class="hero-ticker">
+        <div class="ht-track">
+          <div class="ht-set">
+            <div class="ht-item"><span class="ht-n">148</span><span class="ht-l">calls answered today</span></div>
+            <div class="ht-item"><span class="ht-n">0</span><span class="ht-l">missed leads</span></div>
+            <div class="ht-item"><span class="ht-n">&lt; 5s</span><span class="ht-l">avg response</span></div>
+            <div class="ht-item"><span class="ht-n">30+</span><span class="ht-l">languages handled</span></div>
+            <div class="ht-item"><span class="ht-n">24/7/365</span><span class="ht-l">always on duty</span></div>
+            <div class="ht-item"><span class="ht-n">2am</span><span class="ht-l">appointments booked</span></div>
+            <div class="ht-item"><span class="ht-n">&lt; 5s</span><span class="ht-l">avg response</span></div>
+          </div>
+          <div class="ht-set" aria-hidden="true">
+            <div class="ht-item"><span class="ht-n">148</span><span class="ht-l">calls answered today</span></div>
+            <div class="ht-item"><span class="ht-n">0</span><span class="ht-l">missed leads</span></div>
+            <div class="ht-item"><span class="ht-n">&lt; 5s</span><span class="ht-l">avg response</span></div>
+            <div class="ht-item"><span class="ht-n">30+</span><span class="ht-l">languages handled</span></div>
+            <div class="ht-item"><span class="ht-n">24/7/365</span><span class="ht-l">always on duty</span></div>
+            <div class="ht-item"><span class="ht-n">2am</span><span class="ht-l">appointments booked</span></div>
+            <div class="ht-item"><span class="ht-n">&lt; 5s</span><span class="ht-l">avg response</span></div>
+            <div class="ht-item"><span class="ht-n">148</span><span class="ht-l">calls answered today</span></div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#work" class="scroll-hint">
+        <span class="mono">scroll</span>
+        <span class="sh-line"></span>
+      </a>
+    </section>
+
+    <!-- ═══════════════════════════════ LOGOS ═══════════════════════════════ -->
+    <section id="logos" class="section-logos">
+      <div class="wrap">
+        <div class="logos-head">
+          <span class="sec-rule"></span>
+          <span class="sec-sub"
+            >Built on the world's best AI infrastructure</span
+          >
+        </div>
+        <div class="logos-marquee">
+          <div class="logos-track">
+            <!-- group x2 -->
+            <div class="lg-set">
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg><em>Anthropic</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg><em>OpenAI</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z"/></svg><em>ElevenLabs</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 20.57c-4.73 0-8.57-3.84-8.57-8.57S7.27 3.43 12 3.43 20.57 7.27 20.57 12 16.73 20.57 12 20.57zm4.97-9.77a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm0 7.2a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm-9.94 0a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm0-7.2a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8z"/></svg><em>Twilio</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M21.4737 5.6842c-1.1772 0-2.1663.8051-2.4468 1.8947h-2.8955c-1.235 0-2.289.893-2.492 2.111l-.1038.623a1.263 1.263 0 0 1-1.246 1.0555H11.289c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947s-2.1663.8051-2.4467 1.8947H4.973c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947C1.1311 9.4737 0 10.6047 0 12s1.131 2.5263 2.5263 2.5263c1.1772 0 2.1663-.8051 2.4468-1.8947h1.4223c.2804 1.0896 1.2696 1.8947 2.4467 1.8947 1.1772 0 2.1663-.8051 2.4468-1.8947h1.0008a1.263 1.263 0 0 1 1.2459 1.0555l.1038.623c.203 1.218 1.257 2.111 2.492 2.111h.3692c.2804 1.0895 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263c-1.1772 0-2.1664.805-2.4468 1.8947h-.3692a1.263 1.263 0 0 1-1.246-1.0555l-.1037-.623A2.52 2.52 0 0 0 13.9607 12a2.52 2.52 0 0 0 .821-1.4794l.1038-.623a1.263 1.263 0 0 1 1.2459-1.0555h2.8955c.2805 1.0896 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263m0 1.2632a1.263 1.263 0 0 1 1.2631 1.2631 1.263 1.263 0 0 1-1.2631 1.2632 1.263 1.263 0 0 1-1.2632-1.2632 1.263 1.263 0 0 1 1.2632-1.2631M2.5263 10.7368A1.263 1.263 0 0 1 3.7895 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 1.2632 12a1.263 1.263 0 0 1 1.2631-1.2632m6.3158 0A1.263 1.263 0 0 1 10.1053 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 7.579 12a1.263 1.263 0 0 1 1.2632-1.2632m10.1053 3.7895a1.263 1.263 0 0 1 1.2631 1.2632 1.263 1.263 0 0 1-1.2631 1.2631 1.263 1.263 0 0 1-1.2632-1.2631 1.263 1.263 0 0 1 1.2632-1.2632"/></svg><em>n8n</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M7.53 15.975a7.53 7.53 0 0 0 2.206-5.325A7.54 7.54 0 0 0 7.53 5.325L2.205 0A7.54 7.54 0 0 0 0 5.325a7.54 7.54 0 0 0 2.205 5.325zm11.144.493a7.54 7.54 0 0 0-5.325-2.206 7.54 7.54 0 0 0-5.325 2.206l5.325 5.325a7.54 7.54 0 0 0 5.325 2.205A7.54 7.54 0 0 0 24 21.793zM2.219 21.78a7.54 7.54 0 0 0 5.325 2.205v-7.53H.014a7.54 7.54 0 0 0 2.205 5.325M20.73 8.595a7.53 7.53 0 0 0-5.327-2.206 7.53 7.53 0 0 0-5.325 2.207l5.325 5.325z"/></svg><em>LangChain</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"/></svg><em>Supabase</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="m12 1.608 12 20.784H0Z"/></svg><em>Vercel</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z"/></svg><em>HubSpot</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M13.38 3.498c-.27 0-.511.19-.566.465L9.85 18.986a.578.578 0 0 0 .453.678l4.095.826a.58.58 0 0 0 .682-.455l2.963-15.021a.578.578 0 0 0-.453-.678l-4.096-.826a.589.589 0 0 0-.113-.012zm-5.876.098a.576.576 0 0 0-.516.318L.062 17.697a.575.575 0 0 0 .256.774l3.733 1.877a.578.578 0 0 0 .775-.258l6.926-13.781a.577.577 0 0 0-.256-.776L7.762 3.658a.571.571 0 0 0-.258-.062zm11.74.115a.576.576 0 0 0-.576.576v15.426c0 .318.258.578.576.578h4.178a.58.58 0 0 0 .578-.578V4.287a.578.578 0 0 0-.578-.576Z"/></svg><em>Make</em></div>
+            </div>
+            <div class="lg-set" aria-hidden="true">
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg><em>Anthropic</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg><em>OpenAI</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z"/></svg><em>ElevenLabs</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 20.57c-4.73 0-8.57-3.84-8.57-8.57S7.27 3.43 12 3.43 20.57 7.27 20.57 12 16.73 20.57 12 20.57zm4.97-9.77a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm0 7.2a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm-9.94 0a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8zm0-7.2a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8z"/></svg><em>Twilio</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M21.4737 5.6842c-1.1772 0-2.1663.8051-2.4468 1.8947h-2.8955c-1.235 0-2.289.893-2.492 2.111l-.1038.623a1.263 1.263 0 0 1-1.246 1.0555H11.289c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947s-2.1663.8051-2.4467 1.8947H4.973c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947C1.1311 9.4737 0 10.6047 0 12s1.131 2.5263 2.5263 2.5263c1.1772 0 2.1663-.8051 2.4468-1.8947h1.4223c.2804 1.0896 1.2696 1.8947 2.4467 1.8947 1.1772 0 2.1663-.8051 2.4468-1.8947h1.0008a1.263 1.263 0 0 1 1.2459 1.0555l.1038.623c.203 1.218 1.257 2.111 2.492 2.111h.3692c.2804 1.0895 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263c-1.1772 0-2.1664.805-2.4468 1.8947h-.3692a1.263 1.263 0 0 1-1.246-1.0555l-.1037-.623A2.52 2.52 0 0 0 13.9607 12a2.52 2.52 0 0 0 .821-1.4794l.1038-.623a1.263 1.263 0 0 1 1.2459-1.0555h2.8955c.2805 1.0896 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263m0 1.2632a1.263 1.263 0 0 1 1.2631 1.2631 1.263 1.263 0 0 1-1.2631 1.2632 1.263 1.263 0 0 1-1.2632-1.2632 1.263 1.263 0 0 1 1.2632-1.2631M2.5263 10.7368A1.263 1.263 0 0 1 3.7895 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 1.2632 12a1.263 1.263 0 0 1 1.2631-1.2632m6.3158 0A1.263 1.263 0 0 1 10.1053 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 7.579 12a1.263 1.263 0 0 1 1.2632-1.2632m10.1053 3.7895a1.263 1.263 0 0 1 1.2631 1.2632 1.263 1.263 0 0 1-1.2631 1.2631 1.263 1.263 0 0 1-1.2632-1.2631 1.263 1.263 0 0 1 1.2632-1.2632"/></svg><em>n8n</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M7.53 15.975a7.53 7.53 0 0 0 2.206-5.325A7.54 7.54 0 0 0 7.53 5.325L2.205 0A7.54 7.54 0 0 0 0 5.325a7.54 7.54 0 0 0 2.205 5.325zm11.144.493a7.54 7.54 0 0 0-5.325-2.206 7.54 7.54 0 0 0-5.325 2.206l5.325 5.325a7.54 7.54 0 0 0 5.325 2.205A7.54 7.54 0 0 0 24 21.793zM2.219 21.78a7.54 7.54 0 0 0 5.325 2.205v-7.53H.014a7.54 7.54 0 0 0 2.205 5.325M20.73 8.595a7.53 7.53 0 0 0-5.327-2.206 7.53 7.53 0 0 0-5.325 2.207l5.325 5.325z"/></svg><em>LangChain</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"/></svg><em>Supabase</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="m12 1.608 12 20.784H0Z"/></svg><em>Vercel</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z"/></svg><em>HubSpot</em></div>
+              <div class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M13.38 3.498c-.27 0-.511.19-.566.465L9.85 18.986a.578.578 0 0 0 .453.678l4.095.826a.58.58 0 0 0 .682-.455l2.963-15.021a.578.578 0 0 0-.453-.678l-4.096-.826a.589.589 0 0 0-.113-.012zm-5.876.098a.576.576 0 0 0-.516.318L.062 17.697a.575.575 0 0 0 .256.774l3.733 1.877a.578.578 0 0 0 .775-.258l6.926-13.781a.577.577 0 0 0-.256-.776L7.762 3.658a.571.571 0 0 0-.258-.062zm11.74.115a.576.576 0 0 0-.576.576v15.426c0 .318.258.578.576.578h4.178a.58.58 0 0 0 .578-.578V4.287a.578.578 0 0 0-.578-.576Z"/></svg><em>Make</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ COMPARISON ═══════════════════════════════ -->
+    <section id="work" class="section sec-comparison">
+      <div class="wrap">
+        <header class="sec-head center reveal-up in" data-d="1">
+          <h2 class="sec-title">
+            The old way <span class="italic gold">vs.</span><br />the Kaizen
+            way.
+          </h2>
+          <p class="sec-lead">
+            A missed call at 9:47 pm is a booked appointment at your competitor
+            by 9:48. Here's the math hiring has been hiding from you.
+          </p>
+        </header>
+
+        <div class="cmp">
+          <div class="cmp-col cmp-old reveal-up in" data-d="2">
+            <div class="cmp-col-head">
+              <span class="mono dim">01 · status quo</span>
+              <h3>Without Kaizen AI</h3>
+              <span class="cmp-tag old-tag">Staff &amp; manual</span>
+            </div>
+            <ul class="cmp-list">
+              <li>Staff cost <b>$2,000–4,000/mo</b> — 9 to 5 only</li>
+              <li>
+                Leads call after hours. No one picks up. They call your
+                competitor
+              </li>
+              <li>Employees tire, err, take sick days, and lose focus</li>
+              <li>New hires need weeks of training</li>
+              <li>WhatsApp, site chat, DMs sit unread for hours</li>
+              <li>Follow-ups slip. Warm leads go cold</li>
+              <li>Scaling means more hires, more salaries, more risk</li>
+            </ul>
+          </div>
+
+          <div class="cmp-vs" aria-hidden="true">
+            <span class="vs-line"></span>
+            <span class="vs-circle"><em>vs</em></span>
+            <span class="vs-line"></span>
+          </div>
+
+          <div class="cmp-col cmp-new reveal-up in" data-d="3">
+            <div class="cmp-corner corner-tl"></div>
+            <div class="cmp-corner corner-br"></div>
+            <div class="cmp-col-head">
+              <span class="mono gold">02 · kaizen</span>
+              <h3>With Kaizen AI</h3>
+              <span class="cmp-tag new-tag">One AI, infinite reach</span>
+            </div>
+            <ul class="cmp-list cmp-list-new">
+              <li>One AI agent. No salary, no insurance, no turnover</li>
+              <li>
+                Every call, chat, message answered in seconds — at 2am, on
+                weekends, on holidays
+              </li>
+              <li>
+                Real, natural conversations — indistinguishable from a trained
+                human
+              </li>
+              <li>Knows your business from day one. Zero ramp-up</li>
+              <li>
+                Books appointments, guides buyers, answers in
+                <b>30+ languages</b>
+              </li>
+              <li>Scale from 10 to 10,000 conversations at the same cost</li>
+              <li>Live phone dashboard + WhatsApp alerts for every lead</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ SOLUTIONS ═══════════════════════════════ -->
+    <section id="solutions" class="section sec-solutions">
+      <div class="wrap">
+        <header class="sec-head center reveal-up in" data-d="4">
+          <h2 class="sec-title">
+            Every customer who reaches out —<br />
+            <span class="italic gold">gets heard, helped, and booked.</span>
+          </h2>
+          <p class="sec-lead">
+            Dental clinic, retail, real estate, law firm — doesn't matter. Your
+            Kaizen AI agent is trained on your products, pricing, availability,
+            and FAQs. From day one, it performs like your best employee.
+          </p>
+        </header>
+
+        <div class="sol-grid">
+          <article
+            class="sol-card tilt sol-big reveal-up in"
+            data-d="1"
+            style="--mx: 13.73774996700334%; --my: 16.405180454657962%"
+          >
+            <div class="sol-n mono">01</div>
+            <div class="sol-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                ></path>
+                <path d="M8 10h8M8 14h5"></path>
+              </svg>
+            </div>
+            <h3 class="sol-t">AI <em>Chatbots</em></h3>
+            <p class="sol-d">
+              Intelligent conversations on your website and messaging channels —
+              answering enquiries, qualifying leads, and booking appointments
+              with full knowledge of your business.
+            </p>
+            <div class="sol-foot">
+              <span class="chip">Website</span>
+              <span class="chip">WhatsApp</span>
+              <span class="chip">Instagram</span>
+              <span class="chip">Messenger</span>
+            </div>
+            <div class="tilt-spot"></div>
+          </article>
+
+          <article
+            class="sol-card tilt sol-feat reveal-up in"
+            data-d="2"
+            style="--mx: 1.756032079290357%; --my: 11.660466895083655%"
+          >
+            <div class="sol-flag mono">Most popular</div>
+            <div class="sol-n mono">02</div>
+            <div class="sol-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+              >
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7A2 2 0 0 1 22 16.9z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="sol-t">AI <em>Voice</em> Agents</h3>
+            <p class="sol-d">
+              Callers won't know it's AI. A natural-sounding agent answers your
+              phone, handles enquiries, books appointments, and transfers urgent
+              calls — in the caller's preferred language.
+            </p>
+            <div class="sol-foot">
+              <span class="chip">Inbound</span>
+              <span class="chip">Outbound</span>
+              <span class="chip">Transfer-to-human</span>
+            </div>
+            <div class="tilt-spot"></div>
+          </article>
+
+          <article
+            class="sol-card tilt reveal-up in"
+            data-d="3"
+            style="--mx: 13.994915489930637%; --my: 76.00440000083177%"
+          >
+            <div class="sol-n mono">03</div>
+            <div class="sol-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+              >
+                <path d="M15 5a5 5 0 0 1 4 4M15 1a9 9 0 0 1 8 8"></path>
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7A2 2 0 0 1 22 16.9z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="sol-t">Missed-call <em>recovery</em></h3>
+            <p class="sol-d">
+              If a call slips through, your AI agent calls or texts back within
+              minutes — automatically. No lead is ever lost.
+            </p>
+            <div class="sol-foot"><span class="chip">Add-on</span></div>
+            <div class="tilt-spot"></div>
+          </article>
+
+          <article class="sol-card tilt reveal-up in" data-d="4">
+            <div class="sol-n mono">04</div>
+            <div class="sol-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                <path d="M8 21h8M12 17v4M10 8h8M10 12h5"></path>
+              </svg>
+            </div>
+            <h3 class="sol-t">Command <em>centre</em></h3>
+            <p class="sol-d">
+              Every call, conversation, booking — tracked in a live dashboard on
+              your phone. Instant WhatsApp pings for new leads and appointments.
+            </p>
+            <div class="sol-foot"><span class="chip">Dashboard</span></div>
+            <div class="tilt-spot"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ BENEFITS ═══════════════════════════════ -->
+    <section id="benefits" class="section sec-benefits">
+      <div class="wrap">
+        <header class="sec-head center reveal-up in" data-d="1">
+          <h2 class="sec-title">
+            Three reasons operators <span class="italic gold">switch.</span>
+          </h2>
+        </header>
+
+        <div class="ben-grid">
+          <article class="ben tilt reveal-up in" data-d="2">
+            <div class="ben-head">
+              <span class="ben-k mono">01</span>
+              <span class="ben-metric"
+                >0<span class="ben-metric-sm">&nbsp;missed</span></span
+              >
+            </div>
+            <h3>Always on, <em>24/7/365</em></h3>
+            <p>
+              Never sleeps, never calls in sick. Every call answered, every
+              message replied — every day of the year.
+            </p>
+            <div class="ben-foot">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+              <span class="mono">zero missed leads</span>
+            </div>
+            <div class="tilt-spot"></div>
+          </article>
+
+          <article
+            class="ben tilt reveal-up in"
+            data-d="3"
+            style="--mx: 30.902175903320312%; --my: 6.51602701582268%"
+          >
+            <div class="ben-head">
+              <span class="ben-k mono">02</span>
+              <span class="ben-metric"
+                >30<span class="ben-metric-sm">+ langs</span></span
+              >
+            </div>
+            <h3>Any language, <em>any channel</em></h3>
+            <p>
+              Text or voice, any language — your AI agent communicates fluently
+              across every channel. No customer turned away.
+            </p>
+            <div class="ben-foot">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path
+                  d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"
+                ></path>
+              </svg>
+              <span class="mono">text · voice · any locale</span>
+            </div>
+            <div class="tilt-spot"></div>
+          </article>
+
+          <article class="ben tilt reveal-up in" data-d="4">
+            <div class="ben-head">
+              <span class="ben-k mono">03</span>
+              <span class="ben-metric"
+                >−80<span class="ben-metric-sm">% cost</span></span
+              >
+            </div>
+            <h3>Pays for <em>itself</em></h3>
+            <p>
+              Salary, insurance, sick days, turnover — or one AI agent at a
+              fraction of the cost handling 10× the volume. Zero errors. Zero
+              days off.
+            </p>
+            <div class="ben-foot">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                <polyline points="16 7 22 7 22 13"></polyline>
+              </svg>
+              <span class="mono">80% cost vs. hiring</span>
+            </div>
+            <div class="tilt-spot"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ PROCESS (horizontal) ═══════════════════════════════ -->
+    <section id="process" class="section sec-process">
+      <div class="process-sticky">
+        <div class="wrap process-head">
+          <h2 class="sec-title light">
+            Live in <span class="italic gold">3 steps.</span>
+          </h2>
+          <p class="sec-lead light">
+            Talk on Monday. Live by the end of the week. We do the heavy lifting
+            — you approve before launch.
+          </p>
+
+          <div class="process-progress" aria-hidden="true">
+            <div class="pp-bar">
+              <div class="pp-fill" id="ppFill" style="width: 100%"></div>
+            </div>
+            <div class="pp-labels">
+              <span class="pp-lbl active" data-i="0">01 · Discovery</span>
+              <span class="pp-lbl active" data-i="1">02 · Build</span>
+              <span class="pp-lbl active" data-i="2">03 · Go live</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-track" id="processTrack">
+          <article class="pr-step reveal-up in" data-d="1">
+            <div class="pr-step-body">
+              <div class="pr-n">01</div>
+              <div class="pr-days mono">Day 01 · 30 min</div>
+              <h3>Discovery call</h3>
+              <p>
+                A 30-minute call to understand your business and map where leads
+                slip. We sketch the agent's knowledge base together.
+              </p>
+              <ul class="pr-list">
+                <li>Audit current flow (calls, chats, DMs)</li>
+                <li>Identify your top revenue-leaking moments</li>
+                <li>Draft a scope &amp; fixed quote</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="pr-step reveal-up in" data-d="2">
+            <div class="pr-step-body">
+              <div class="pr-n">02</div>
+              <div class="pr-days mono">Day 02 – 10</div>
+              <h3>We build your AI agent</h3>
+              <p>
+                We train the agent on your business, connect it to your stack,
+                and run real-scenario testing. You approve before it goes live.
+              </p>
+              <ul class="pr-list">
+                <li>Custom voice &amp; tone, trained on your FAQs</li>
+                <li>Integrations: Calendar, CRM, WhatsApp, phone</li>
+                <li>End-to-end test calls with your team</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="pr-step reveal-up in" data-d="3">
+            <div class="pr-step-body">
+              <div class="pr-n">03</div>
+              <div class="pr-days mono">Day 10 → ∞</div>
+              <h3>Go live &amp; optimise</h3>
+              <p>
+                Your agent goes live. We monitor, refine, and deliver a monthly
+                performance report — leads, calls, bookings, ROI.
+              </p>
+              <ul class="pr-list">
+                <li>Ongoing tuning from live transcripts</li>
+                <li>Monthly report: leads, calls, revenue</li>
+                <li>Add channels / languages anytime</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ CTA ═══════════════════════════════ -->
+    <section id="book" class="section sec-cta">
+      <div class="cta-orbs" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="wrap cta-wrap">
+        <h2 class="cta-h">
+          <span class="line">Stop missing</span>
+          <span class="line italic gold">leads.</span>
+          <span class="line"
+            >Start <span class="italic gold">growing.</span></span
+          >
+        </h2>
+        <p class="cta-sub">
+          Book a free 20-minute call. We'll show you exactly where you're losing
+          customers — and how to fix it by next Friday.
+        </p>
+        <div class="cta-btns">
+          <a href="#book-call" class="btn btn-primary xl booking-trigger">
+            <span class="btn-label">Book a free call</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="#voice-demo" class="btn btn-ghost-dark demo-trigger"
+            >Live demo</a
+          >
+        </div>
+        <p class="cta-note mono">No credit card · 20 minutes · no pressure</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ TESTIMONIALS ═══════════════════════════════ -->
+    <section id="results" class="section sec-test">
+      <div class="wrap">
+        <header class="sec-head center reveal-up in" data-d="4">
+          <h2 class="sec-title">
+            Real results, <span class="italic gold">real numbers.</span>
+          </h2>
+        </header>
+
+        <div class="quote-main reveal-up in" data-d="1">
+          <div class="q-mark" aria-hidden="true">“</div>
+          <blockquote>
+            We were missing around <span class="hl">15 calls a week.</span> Now
+            every call is answered instantly. We booked
+            <span class="hl">23 extra appointments last month</span> — without
+            hiring anyone.
+          </blockquote>
+          <div class="q-attr">
+            <div class="q-av">A</div>
+            <div>
+              <div class="q-name">Dr. Amara Silva</div>
+              <div class="q-role mono">
+                Clinic Director · Lotus Dental, Colombo
+              </div>
+            </div>
+            <div class="q-metric">
+              <div class="q-m-n">+23</div>
+              <div class="q-m-l mono">extra bookings / mo</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-pair">
+          <div class="q-small reveal-up in" data-d="2">
+            <div class="q-small-rule"></div>
+            <p>
+              “I used to lose leads while showing properties. The voice agent
+              handles my calls, answers enquiries, and books viewings. It paid
+              for itself in the first week.”
+            </p>
+            <div class="q-attr small">
+              <div class="q-av">R</div>
+              <div>
+                <div class="q-name">Ravi Mendis</div>
+                <div class="q-role mono">Principal · Mendis Properties</div>
+              </div>
+            </div>
+          </div>
+          <div class="q-small reveal-up in" data-d="3">
+            <div class="q-small-rule"></div>
+            <p>
+              “Our chatbot captures leads at 11pm that we never would have
+              gotten. 30% of last quarter's new patients came through the bot —
+              in three different languages.”
+            </p>
+            <div class="q-attr small">
+              <div class="q-av">N</div>
+              <div>
+                <div class="q-name">Nisha Perera</div>
+                <div class="q-role mono">Operations · Glow Aesthetics</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+    <section id="faq" class="section sec-faq">
+      <div class="wrap">
+        <div class="faq-cols">
+          <aside class="faq-aside" style="text-align: center">
+            <h2 class="sec-title">
+              Frequently<br />asked <span class="italic gold">questions.</span>
+            </h2>
+            <p class="sec-lead">
+              Can't find the answer? Book a call and we'll walk you through
+              everything.
+            </p>
+            <a href="#book" class="faq-cta booking-trigger"
+              >Talk to our team →</a
+            >
+          </aside>
+
+          <div class="faq-list">
+            <details class="faq-item reveal-up in" open="" data-d="4">
+              <summary>
+                <span class="faq-q">How long does setup take?</span
+                ><span class="faq-ico">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>
+                  Most chatbots are live within 3–5 days. Voice agents take 7–14
+                  days. We handle everything — you simply approve the final
+                  setup before it goes live.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item reveal-up in" data-d="1">
+              <summary>
+                <span class="faq-q">What platforms do you integrate with?</span
+                ><span class="faq-ico">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>
+                  Google Calendar, Calendly, HubSpot, Salesforce, Pipedrive,
+                  Zoho, WhatsApp Business, Facebook Messenger, Instagram DMs,
+                  and most phone systems via Twilio. If you use it, we can
+                  connect to it.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item reveal-up in" data-d="2">
+              <summary>
+                <span class="faq-q">Is our data secure?</span
+                ><span class="faq-ico">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>
+                  Yes. All conversations are encrypted. We never sell or share
+                  your data. Our systems comply with GDPR, and we provide Data
+                  Processing Agreements for enterprise clients.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item reveal-up in" data-d="3">
+              <summary>
+                <span class="faq-q">Do we need a technical team?</span
+                ><span class="faq-ico">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>
+                  No. We handle design, build, deployment, and ongoing
+                  optimisation. You receive a monthly report showing exactly
+                  what your AI agent did — leads captured, calls answered, sales
+                  closed, appointments booked.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item reveal-up in" data-d="4">
+              <summary>
+                <span class="faq-q"
+                  >What if the AI can't handle a question?</span
+                ><span class="faq-ico">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>
+                  It escalates to your team. The AI recognises when a
+                  conversation needs a human and transfers with full context.
+                  The customer never feels abandoned.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item reveal-up in" data-d="1">
+              <summary>
+                <span class="faq-q">What languages does it support?</span
+                ><span class="faq-ico">+</span>
+              </summary>
+              <div class="faq-a">
+                <p>
+                  Our AI agents communicate fluently in 30+ languages — both
+                  text and voice. Your customers are served in their preferred
+                  language automatically.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+    <footer>
+      <div class="wrap">
+        <div class="ft-top">
+          <div class="ft-brand">
+            <div
+              class="logo-text big"
+              style="
+                font-family: &quot;Syne&quot;, sans-serif;
+                font-weight: 800;
+              "
+            >
+              Kaizen<em
+                style="
+                  font-family: &quot;Syne&quot;, sans-serif;
+                  font-style: normal;
+                  font-weight: 800;
+                  color: var(--g2);
+                "
+                >AI</em
+              >
+            </div>
+            <p class="ft-tag">
+              AI chatbots &amp; voice agents that never miss a customer.
+            </p>
+            <p class="ft-desc">
+              We build AI-powered agents that answer calls, handle enquiries,
+              and book appointments — 24/7/365, in any language.
+            </p>
+            <div class="fsoc">
+              <a
+                href="https://www.linkedin.com/company/kaizenai-dev/about/?viewAsMember=true"
+                class="linkedin"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://web.facebook.com/profile.php?id=61574344472130"
+                class="facebook"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/kaizenai.dev?igsh=aDZ5NG15a2xkcnQ5"
+                class="instagram"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://x.com/kaizen_ai_dev"
+                class="x"
+                aria-label="X"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26L22.822 21.75h-6.652l-5.21-6.817-5.965 6.817H1.685l7.73-8.835L1.272 2.25h6.82l4.71 6.231zM17.083 19.77h1.833L7.092 4.126H5.125z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://medium.com/@kaizenaioffcial2026"
+                class="medium"
+                aria-label="Medium"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M0 0v24h24V0H0zm19.938 5.686L18.651 6.92a.376.376 0 0 0-.143.362v9.067a.376.376 0 0 0 .143.361l1.257 1.234v.271h-6.322v-.27l1.302-1.265c.128-.128.128-.165.128-.36V8.99l-3.62 9.195h-.49L6.69 8.99v6.163a.85.85 0 0 0 .233.707l1.694 2.054v.271H3.815v-.27L5.51 15.86a.82.82 0 0 0 .218-.707V8.027a.624.624 0 0 0-.203-.527L4.019 5.686v-.27h4.674l3.613 7.923 3.176-7.924h4.456v.271z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://wa.me/94770299569"
+                class="whatsapp"
+                aria-label="WhatsApp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.105 3.195 5.1 4.485.714.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345m-5.446 7.443h-.016c-1.77 0-3.524-.48-5.055-1.38l-.36-.214-3.75.975 1.005-3.645-.239-.375c-.99-1.576-1.516-3.391-1.516-5.26 0-5.445 4.455-9.885 9.942-9.885 2.654 0 5.145 1.035 7.021 2.91 1.875 1.859 2.909 4.35 2.909 6.99-.004 5.444-4.46 9.885-9.935 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="ft-col reveal-up in" data-d="2">
+            <h5>Product</h5>
+            <a href="#solutions">AI Chatbots</a>
+            <a href="#solutions">AI Voice Agents</a>
+            <a href="#process">How it works</a>
+          </div>
+          <div class="ft-col reveal-up in" data-d="3">
+            <h5>Company</h5>
+            <a href="#top">About</a>
+            <a href="#results">Case studies</a>
+            <a
+              href="https://medium.com/@kaizenaioffcial2026"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Blog</a
+            >
+            <a href="#book" class="booking-trigger">Contact</a>
+          </div>
+          <div class="ft-col reveal-up in" data-d="4">
+            <h5>Legal</h5>
+            <a href="#privacy" class="legal-trigger" data-tab="privacy"
+              >Privacy Policy</a
+            >
+            <a href="#terms" class="legal-trigger" data-tab="terms"
+              >Terms of Service</a
+            >
+          </div>
+        </div>
+
+        <!-- huge wordmark -->
+        <!-- <div class="ft-giant" aria-hidden="true">
+          <span>Kaizen</span><em>AI</em>
+        </div> -->
+
+        <div class="ft-bottom">
+          <span class="mono">© 2026 Kaizen AI. All rights reserved.</span>
+          <span class="mono">AI Chatbots &amp; Voice Agents · 24/7/365</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ═══════════════════════════════ LEGAL MODAL ═══════════════════════════════ -->
+    <div
+      class="modal"
+      id="legalModal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="modal-bg" data-close-legal=""></div>
+      <div class="modal-card legal-modal-card">
+        <button
+          class="modal-close"
+          type="button"
+          aria-label="Close"
+          data-close-legal=""
+        >
+          ×
+        </button>
+        <div class="legal-tabs">
+          <button class="legal-tab active" data-tab="privacy">
+            Privacy Policy
+          </button>
+          <button class="legal-tab" data-tab="terms">Terms of Service</button>
+        </div>
+        <div class="legal-body">
+          <!-- PRIVACY POLICY -->
+          <div class="legal-pane active" id="legalPane-privacy">
+            <span class="legal-updated">Last updated: April 2026</span>
+            <h3>1. Who We Are</h3>
+            <p>
+              Kaizen AI ("we", "us", "our") operates kaizenai.dev and provides
+              AI chatbot and voice agent services. By using our website you
+              agree to this policy.
+            </p>
+            <h3>2. Information We Collect</h3>
+            <p>
+              We collect information you voluntarily provide through our contact
+              form:
+            </p>
+            <ul>
+              <li>Full name and company name</li>
+              <li>Work email address and phone number</li>
+              <li>Details about your business needs and timeline</li>
+            </ul>
+            <p>
+              We also collect usage data automatically via Google Analytics 4
+              (page views, session duration, device type). No personally
+              identifiable information is included in analytics data.
+            </p>
+            <h3>3. How We Use Your Information</h3>
+            <ul>
+              <li>To respond to your enquiry and schedule a strategy call</li>
+              <li>To prepare a more relevant first conversation</li>
+              <li>
+                To improve our website and services via aggregated analytics
+              </li>
+              <li>
+                We do not sell, rent, or share your personal data with third
+                parties for marketing purposes
+              </li>
+            </ul>
+            <h3>4. Third-Party Services</h3>
+            <p>We use the following services which may process your data:</p>
+            <ul>
+              <li>
+                <strong>EmailJS</strong> — transmits form submissions to our
+                inbox. Subject to EmailJS's privacy policy.
+              </li>
+              <li>
+                <strong>Google Analytics 4</strong> — anonymised website
+                analytics. Subject to Google's privacy policy.
+              </li>
+              <li>
+                <strong>Google Fonts / jsDelivr</strong> — font and script
+                delivery CDNs.
+              </li>
+            </ul>
+            <h3>5. Data Security</h3>
+            <p>
+              All data transmitted through our website is encrypted via
+              HTTPS/TLS. We do not store form submissions on our servers —
+              submissions are routed directly to our secure inbox via EmailJS.
+            </p>
+            <h3>6. Your Rights (GDPR)</h3>
+            <p>
+              If you are located in the EU/EEA or UK, you have the right to
+              access, rectify, or erase your personal data. To exercise any of
+              these rights, contact us via WhatsApp or the contact form and we
+              will respond within 30 days.
+            </p>
+            <h3>7. Cookies</h3>
+            <p>
+              We use cookies only for Google Analytics (performance/analytics
+              cookies). No advertising or tracking cookies are used. You may
+              disable cookies in your browser settings at any time.
+            </p>
+            <h3>8. Changes to This Policy</h3>
+            <p>
+              We may update this policy from time to time. The "Last updated"
+              date at the top will reflect any changes. Continued use of the
+              site after changes constitutes acceptance.
+            </p>
+          </div>
+          <!-- TERMS OF SERVICE -->
+          <div class="legal-pane" id="legalPane-terms">
+            <span class="legal-updated">Last updated: April 2026</span>
+            <h3>1. Acceptance of Terms</h3>
+            <p>
+              By accessing kaizenai.dev you agree to be bound by these Terms of
+              Service. If you do not agree, please do not use our website or
+              services.
+            </p>
+            <h3>2. Services</h3>
+            <p>
+              Kaizen AI provides AI chatbot and voice agent solutions for
+              businesses. Services are delivered under separate client
+              agreements. The website itself is informational only — no services
+              are purchased directly through this site.
+            </p>
+            <h3>3. Intellectual Property</h3>
+            <p>
+              All content on this website — including copy, design, graphics,
+              and code — is the property of Kaizen AI and is protected by
+              copyright law. You may not reproduce, distribute, or create
+              derivative works without our written consent.
+            </p>
+            <h3>4. Use of the Website</h3>
+            <p>You agree not to:</p>
+            <ul>
+              <li>Use the site for any unlawful purpose</li>
+              <li>
+                Attempt to gain unauthorised access to any part of the site
+              </li>
+              <li>
+                Submit false or misleading information through our contact form
+              </li>
+              <li>Use automated tools to scrape or copy site content</li>
+            </ul>
+            <h3>5. Disclaimer of Warranties</h3>
+            <p>
+              The website is provided "as is" without warranties of any kind,
+              express or implied. We do not warrant that the site will be
+              uninterrupted, error-free, or free of viruses.
+            </p>
+            <h3>6. Limitation of Liability</h3>
+            <p>
+              To the fullest extent permitted by law, Kaizen AI shall not be
+              liable for any indirect, incidental, or consequential damages
+              arising from your use of this website or our services.
+            </p>
+            <h3>7. Client Agreements</h3>
+            <p>
+              Actual service delivery, pricing, payment terms, and deliverables
+              are governed by individual client agreements signed separately.
+              These Terms of Service apply only to your use of this website.
+            </p>
+            <h3>8. Governing Law</h3>
+            <p>
+              These terms are governed by the laws of Sri Lanka. Any disputes
+              shall be subject to the exclusive jurisdiction of the courts of
+              Sri Lanka.
+            </p>
+            <h3>9. Changes to These Terms</h3>
+            <p>
+              We may update these terms at any time. The "Last updated" date
+              will reflect changes. Continued use of the site constitutes
+              acceptance of the revised terms.
+            </p>
+            <h3>10. Contact</h3>
+            <p>
+              For any questions about these terms, reach out via our contact
+              form or WhatsApp.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ BOOKING MODAL ═══════════════════════════════ -->
+    <div class="modal" id="bookingModal" aria-hidden="true">
+      <div class="modal-bg" data-close=""></div>
+      <div class="modal-card">
+        <button class="modal-close" data-close="" aria-label="Close">×</button>
+        <div class="modal-top">
+          <span class="mono kicker">Book a strategy call</span>
+          <div class="step-indicator" aria-label="Form progress">
+            <div class="step-dot active" data-step="1"><span>1</span></div>
+            <div class="step-line"></div>
+            <div class="step-dot" data-step="2"><span>2</span></div>
+            <div class="step-line"></div>
+            <div class="step-dot" data-step="3"><span>3</span></div>
+          </div>
+          <h3 class="step-heading">
+            Tell us a bit <span class="italic gold">about you.</span>
+          </h3>
+          <p class="step-desc">Your name and contact so we know who we're talking to.</p>
+        </div>
+        <form class="modal-form" id="bookingForm" novalidate>
+
+          <!-- ── Step 1: You ── -->
+          <div class="form-step active" data-step="1">
+            <div class="field">
+              <label>First Name</label>
+              <input name="first_name" type="text" placeholder="First Name" required />
+            </div>
+            <div class="field">
+              <label>Last Name</label>
+              <input name="last_name" type="text" placeholder="Last Name" required />
+            </div>
+            <div class="field full">
+              <label>Work Email</label>
+              <input name="email" type="email" placeholder="you@company.com" required />
+              <span class="field-error" id="emailError">Please enter a valid email address</span>
+            </div>
+            <div class="field full">
+              <label>Company</label>
+              <input name="company" type="text" placeholder="Your company" required />
+            </div>
+            <div class="step-nav">
+              <span class="mono dim">Step 1 of 3</span>
+              <button type="button" class="btn btn-primary step-next">Next <span>→</span></button>
+            </div>
+          </div>
+
+          <!-- ── Step 2: Your Business ── -->
+          <div class="form-step" data-step="2">
+            <div class="field full">
+              <label>Company Website <span class="opt-tag">(optional)</span></label>
+              <input name="website" type="url" placeholder="https://yourcompany.com" />
+              <span class="field-error" id="websiteError">Please enter a valid URL (e.g. https://yourcompany.com)</span>
+            </div>
+            <div class="field full" id="phoneField">
+              <label>Phone Number <span class="opt-tag">(optional)</span></label>
+              <div class="phone-wrap">
+                <div class="country-sel" id="countrySel">
+                  <button type="button" class="country-trigger" id="countryTrigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="country-flag" id="countryFlag">🇱🇰</span>
+                    <span class="country-code-lbl" id="countryCodeLbl">+94</span>
+                    <svg class="country-chev" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <div class="country-list" id="countryList" role="listbox">
+                    <input class="country-search" id="countrySearch" type="text" placeholder="Search country…" autocomplete="off" />
+                    <div class="country-items" id="countryItems"></div>
+                  </div>
+                </div>
+                <input class="phone-input" name="phone" id="phoneInput" type="tel" placeholder="Phone number" autocomplete="tel" />
+              </div>
+              <span class="field-error" id="phoneError">Please enter a valid phone number</span>
+            </div>
+            <div class="field">
+              <label>Your Role <span class="opt-tag">(optional)</span></label>
+              <select name="role">
+                <option value="" disabled selected>Select your role</option>
+                <option>Founder / CEO</option>
+                <option>Operations Manager</option>
+                <option>Marketing Manager</option>
+                <option>Sales Manager</option>
+                <option>IT / Tech Lead</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Company Size <span class="opt-tag">(optional)</span></label>
+              <select name="company_size">
+                <option value="" disabled selected>Number of employees</option>
+                <option>1 – 10</option>
+                <option>11 – 50</option>
+                <option>51 – 200</option>
+                <option>201 – 500</option>
+                <option>500+</option>
+              </select>
+            </div>
+            <div class="step-nav">
+              <button type="button" class="btn btn-ghost-sm step-back">← Back</button>
+              <button type="button" class="btn btn-primary step-next">Next <span>→</span></button>
+            </div>
+          </div>
+
+          <!-- ── Step 3: Your Needs ── -->
+          <div class="form-step" data-step="3">
+            <div class="field full">
+              <label>Budget Range</label>
+              <div class="budget-btns">
+                <button type="button" class="budget-btn" data-val="$15K - $50K">$15K – $50K</button>
+                <button type="button" class="budget-btn" data-val="$50K - $150K">$50K – $150K</button>
+                <button type="button" class="budget-btn" data-val="$150K - $500K">$150K – $500K</button>
+                <button type="button" class="budget-btn" data-val="Not Sure Yet">Not Sure Yet</button>
+              </div>
+              <input type="hidden" name="budget" id="budgetHidden" />
+              <span class="field-error" id="budgetError">Please select a budget range</span>
+            </div>
+          <div class="field full">
+            <label for="interestTrigger">What are you interested in?</label>
+            <div class="cust-sel" id="interestSel">
+              <button
+                type="button"
+                class="cust-sel-trigger"
+                id="interestTrigger"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="interestList"
+              >
+                <span class="cust-sel-val placeholder">Select an option…</span>
+                <svg
+                  class="cust-sel-arrow"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 6l4 4 4-4"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <ul
+                class="cust-sel-list"
+                id="interestList"
+                role="listbox"
+                aria-label="What are you interested in?"
+              >
+                <li
+                  class="cust-opt"
+                  role="option"
+                  data-val="AI Chatbot"
+                  tabindex="0"
+                >
+                  <span class="cust-opt-icon">
+                    <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+                      <path
+                        d="M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H6l-4 3V5z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span class="cust-opt-body">
+                    <span class="cust-opt-label">AI Chatbot</span>
+                    <span class="cust-opt-desc"
+                      >24/7 lead qualification &amp; support automation</span
+                    >
+                  </span>
+                  <svg
+                    class="cust-opt-check"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8.5l3.5 3.5 6.5-7"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </li>
+                <li
+                  class="cust-opt"
+                  role="option"
+                  data-val="AI Voice Agent"
+                  tabindex="0"
+                >
+                  <span class="cust-opt-icon">
+                    <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+                      <rect
+                        x="7"
+                        y="2"
+                        width="6"
+                        height="10"
+                        rx="3"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                      <path
+                        d="M4 10a6 6 0 0012 0M10 16v2"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </span>
+                  <span class="cust-opt-body">
+                    <span class="cust-opt-label">AI Voice Agent</span>
+                    <span class="cust-opt-desc"
+                      >Human-sounding phone &amp; call automation</span
+                    >
+                  </span>
+                  <svg
+                    class="cust-opt-check"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8.5l3.5 3.5 6.5-7"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </li>
+                <li class="cust-opt" role="option" data-val="Both" tabindex="0">
+                  <span class="cust-opt-icon">
+                    <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+                      <path
+                        d="M11 2L4 11h7l-2 7 9-9h-7l2-7z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span class="cust-opt-body">
+                    <span class="cust-opt-label">Both</span>
+                    <span class="cust-opt-desc"
+                      >Full AI stack — chatbot + voice bundle</span
+                    >
+                  </span>
+                  <svg
+                    class="cust-opt-check"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8.5l3.5 3.5 6.5-7"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </li>
+                <li
+                  class="cust-opt"
+                  role="option"
+                  data-val="Not sure yet"
+                  tabindex="0"
+                >
+                  <span class="cust-opt-icon">
+                    <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+                      <circle
+                        cx="10"
+                        cy="10"
+                        r="8"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                      <path
+                        d="M10 14v.5M10 6a2.5 2.5 0 011.5 4.5C10.5 11.5 10 12 10 13"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </span>
+                  <span class="cust-opt-body">
+                    <span class="cust-opt-label">Not sure yet</span>
+                    <span class="cust-opt-desc"
+                      >Let us recommend the right fit for you</span
+                    >
+                  </span>
+                  <svg
+                    class="cust-opt-check"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8.5l3.5 3.5 6.5-7"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </li>
+              </ul>
+              <select
+                name="interest"
+                required
+                aria-hidden="true"
+                tabindex="-1"
+                style="
+                  position: absolute;
+                  opacity: 0;
+                  pointer-events: none;
+                  width: 1px;
+                  height: 1px;
+                "
+              >
+                <option value=""></option>
+                <option>AI Chatbot</option>
+                <option>AI Voice Agent</option>
+                <option>Both</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Tell Us About Your Project <span class="opt-tag">(optional)</span></label>
+            <textarea
+              name="notes"
+              rows="3"
+              placeholder="What challenges are you facing? What does success look like?"
+            ></textarea>
+          </div>
+          <div class="step-nav">
+            <button type="button" class="btn btn-ghost-sm step-back">← Back</button>
+            <button type="submit" class="btn btn-primary">Request my call <span>→</span></button>
+          </div>
+          <div class="modal-status" id="modalStatus" aria-live="polite"></div>
+          </div><!-- end step 3 -->
+
+        </form>
+        <div class="modal-success" id="modalSuccess">
+          <div class="ms-icon">✓</div>
+          <h3>We'll be in touch shortly.</h3>
+          <p>
+            Thanks for reaching out. We'll contact you within 1 business day to
+            schedule your free strategy call.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ VOICE DEMO MODAL ═══════════════════════════════ -->
+    <div class="modal" id="voiceDemoModal" aria-hidden="true">
+      <div class="modal-bg" data-close-demo></div>
+      <div class="modal-card vd-card">
+        <button class="modal-close" data-close-demo aria-label="Close">×</button>
+
+        <!-- Modal header -->
+        <div class="vd-modal-head">
+          <span class="mono kicker">AI Voice Agent · Live Demo</span>
+          <h3>Hear it for <span class="italic gold">yourself.</span></h3>
+          <p>Call our live AI agent right now — ask anything. It answers like a real rep, trained on a real business.</p>
+        </div>
+
+        <!-- Voice card — same as it was on the hero -->
+        <div class="vd-voice-wrap">
+          <div class="voice-card vd-voice-card">
+            <div class="vc-top">
+              <div class="vc-top-l">
+                <span class="live-dot pulse"></span>
+                <span class="mono">LIVE · CH 04</span>
+              </div>
+              <div class="vc-top-r mono">00:00:42</div>
+            </div>
+
+            <div class="vc-body">
+              <div class="vc-label mono">// INCOMING CALL</div>
+              <div class="vc-from">
+                <div class="vc-avatar">M</div>
+                <div>
+                  <div class="vc-name">Maya · new caller</div>
+                  <div class="vc-meta mono">+94 · English → Sinhala</div>
+                </div>
+              </div>
+
+              <!-- voice wave -->
+              <div class="wave" id="wave">
+                <div class="wave-bars" id="waveBars">
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span>
+                </div>
+                <div class="wave-ring"></div>
+              </div>
+
+              <!-- transcript -->
+              <div class="transcript" id="transcript" style="display:none">
+                <div class="t-row user show">
+                  <span class="t-who mono">CALLER</span>
+                  <span class="t-msg" data-text="Hi, do you have appointments this week?">Hi, do you have appointments this week?</span>
+                </div>
+                <div class="t-row ai show">
+                  <span class="t-who mono">KAIZEN</span>
+                  <span class="t-msg" data-text="I do — Thursday at 10am or Friday at 2pm work. Which suits you?">I do — Thursday at 10am or Friday at 2pm work. Which suits you?</span>
+                </div>
+                <div class="t-row user show">
+                  <span class="t-who mono">CALLER</span>
+                  <span class="t-msg" data-text="Thursday. Can I book under Maya Fernando?">Thursday. Can I book under Maya Fernando?</span>
+                </div>
+                <div class="t-row ai show">
+                  <span class="t-who mono">KAIZEN</span>
+                  <span class="t-msg" data-text="Booked. You'll get a confirmation on WhatsApp in a moment.">Booked. You'll get a confirmation on WhatsApp in a moment.</span>
+                </div>
+              </div>
+
+              <div class="vc-actions">
+                <div class="vc-stat">
+                  <div class="vc-stat-n">&lt; 5s</div>
+                  <div class="vc-stat-l mono">pick‑up</div>
+                </div>
+                <div class="vc-stat">
+                  <div class="vc-stat-n">30+</div>
+                  <div class="vc-stat-l mono">languages</div>
+                </div>
+                <div class="vc-stat">
+                  <div class="vc-stat-n">24/7</div>
+                  <div class="vc-stat-l mono">on‑duty</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Satellite orbs inside the modal -->
+          <div class="sat sat-a" aria-hidden="true">
+            <div class="sat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <div class="sat-lbl mono">CHAT</div>
+          </div>
+          <div class="sat sat-b" aria-hidden="true">
+            <div class="sat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7A2 2 0 0 1 22 16.9z"></path>
+              </svg>
+            </div>
+            <div class="sat-lbl mono">VOICE</div>
+          </div>
+          <div class="sat sat-c" aria-hidden="true">
+            <div class="sat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                <path d="M3 9h18M8 2v4M16 2v4"></path>
+              </svg>
+            </div>
+            <div class="sat-lbl mono">BOOK</div>
+          </div>
+        </div>
+
+        <!-- Call button + live transcript (hooks for voice-demo.js preserved) -->
+        <div class="vd-footer">
+          <div class="vd-meta mono">
+            <span class="vd-dot"></span>
+            Live · Answering 24/7
+          </div>
+          <button type="button" id="voiceDemoCallBtn" class="btn btn-primary vd-submit" data-state="idle">
+            <span class="vd-phone-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <span class="vd-btn-label">Call now</span>
+          </button>
+          <aside class="vd-right" aria-label="Live transcript" style="display:none">
+            <div class="vd-right-head">
+              <span class="vd-live-dot" aria-hidden="true"></span>
+              <span class="mono">Live transcript</span>
+            </div>
+            <div class="vd-tsc" id="vdTranscript" aria-live="polite">
+              <!-- messages injected by voice-demo.js -->
+            </div>
+          </aside>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ CHAT WIDGET ═══════════════════════════════ -->
+    <button
+      id="chatBubble"
+      class="chat-bubble"
+      aria-label="Chat with Kaizen AI"
+    >
+      <span class="cb-pulse" aria-hidden="true"></span>
+      <svg
+        class="cb-icon cb-icon-chat"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+        />
+      </svg>
+      <svg
+        class="cb-icon cb-icon-close"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      >
+        <path d="M6 6l12 12M6 18L18 6" />
+      </svg>
+      <span class="cb-label">Chat</span>
+      <span class="cb-dot" aria-hidden="true"></span>
+    </button>
+
+    <div id="chatPanel" class="chat-panel" aria-hidden="true">
+      <header class="chat-head">
+        <div class="chat-id">
+          <div class="chat-name">Kaizen<em>AI</em></div>
+          <div class="chat-status">
+            <span class="live-dot"></span
+            ><span class="mono">online · replies instantly</span>
+          </div>
+        </div>
+        <button id="chatClose" class="chat-x" aria-label="Close">×</button>
+      </header>
+      <div id="chatLog" class="chat-log" aria-live="polite"></div>
+      <div id="chatQuick" class="chat-quick">
+        <button data-q="What does Kaizen AI do?">What do you do?</button>
+<button data-q="How long does setup take?">Setup time</button>
+        <button data-q="I'd like to book a call.">Book a call</button>
+      </div>
+      <form id="chatForm" class="chat-form" autocomplete="off">
+        <input
+          id="chatInput"
+          type="text"
+          placeholder="Ask anything about Kaizen AI…"
+          required
+        />
+        <button type="submit" aria-label="Send">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </button>
+      </form>
+      <div class="chat-foot mono">
+        Powered by KAIZEN AI
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ TWEAKS PANEL ═══════════════════════════════ -->
+    <!-- <div id="tweaks" class="tweaks" aria-hidden="true">
+      <div class="tweaks-head">
+        <span class="mono">Tweaks</span>
+        <button class="tw-close" id="twClose" aria-label="Close">×</button>
+      </div>
+      <div class="tweaks-body">
+        <div class="tw-row">
+          <label class="mono">Theme</label>
+          <div class="tw-seg" data-key="theme">
+            <button data-v="light">Light</button>
+            <button data-v="dark">Dark</button>
+            <button data-v="auto" class="on">Auto</button>
+          </div>
+        </div>
+        <div class="tw-row">
+          <label class="mono">Accent hue <span id="hueVal">80°</span></label>
+          <input id="hueSlider" type="range" min="0" max="360" value="45" />
+        </div>
+        <div class="tw-row">
+          <label class="mono"
+            >Animation intensity <span id="animVal">8</span></label
+          >
+          <input id="animSlider" type="range" min="0" max="10" value="8" />
+        </div>
+        <div class="tw-row">
+          <label class="mono">Hero variant</label>
+          <div class="tw-seg" data-key="heroVariant">
+            <button data-v="transcript" class="">Transcript</button>
+            <button data-v="wave" class="on">Wave only</button>
+            <button data-v="minimal" class="">Minimal</button>
+          </div>
+        </div>
+        <div class="tw-row">
+          <label class="mono">Film grain</label>
+          <div class="tw-seg" data-key="grain">
+            <button data-v="true" class="on">On</button>
+            <button data-v="false" class="">Off</button>
+          </div>
+        </div>
+        <div class="tw-row">
+          <label class="mono">Cursor halo</label>
+          <div class="tw-seg" data-key="cursorHalo">
+            <button data-v="true" class="on">On</button>
+            <button data-v="false" class="">Off</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <script src="script.js" defer></script>
+    <script src="voice-demo.js" defer></script>
+    <script src="chat.js" defer></script>
+  </body>
+</html>
